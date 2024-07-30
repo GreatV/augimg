@@ -1,6 +1,6 @@
 from __future__ import print_function, division
-import imgaug as ia
-from imgaug import augmenters as iaa
+import augimg as ia
+from augimg import augmenters as iaa
 import imageio
 import numpy as np
 from skimage import data

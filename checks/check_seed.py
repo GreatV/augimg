@@ -3,9 +3,9 @@ from __future__ import print_function, division
 import numpy as np
 from skimage import data
 
-import imgaug as ia
-import imgaug.random as iarandom
-from imgaug import augmenters as iaa
+import augimg as ia
+import augimg.random as iarandom
+from augimg import augmenters as iaa
 
 
 def main():

@@ -1,38 +1,38 @@
 # Add New `data` Module #606
 
-This patch moves the example data functions from `imgaug.imgaug` to
-the new module `imgaug.data`.
+This patch moves the example data functions from `augimg.augimg` to
+the new module `augimg.data`.
 
 Add Modules:
-* `imgaug.data`
+* `augimg.data`
 
 Add Functions:
-* `imgaug.data.quokka()`
-* `imgaug.data.quokka_square()`
-* `imgaug.data.quokka_heatmap()`
-* `imgaug.data.quokka_segmentation_map()`
-* `imgaug.data.quokka_keypoints()`
-* `imgaug.data.quokka_bounding_boxes()`
-* `imgaug.data.quokka_polygons()`
+* `augimg.data.quokka()`
+* `augimg.data.quokka_square()`
+* `augimg.data.quokka_heatmap()`
+* `augimg.data.quokka_segmentation_map()`
+* `augimg.data.quokka_keypoints()`
+* `augimg.data.quokka_bounding_boxes()`
+* `augimg.data.quokka_polygons()`
 
 Deprecated Functions:
-* `imgaug.imgaug.quokka()`.
-  Use `imgaug.data.quokka()` instead.
-* `imgaug.imgaug.quokka_square()`.
-  Use `imgaug.data.quokka_square()` instead.
-* `imgaug.imgaug.quokka_heatmap()`.
-  Use `imgaug.data.quokka_heatmap()` instead.
-* `imgaug.imgaug.quokka_segmentation_map()`.
-  Use `imgaug.data.quokka_segmentation_map()` instead.
-* `imgaug.imgaug.quokka_keypoints()`.
-  Use `imgaug.data.quokka_keypoints()` instead.
-* `imgaug.imgaug.quokka_bounding_boxes()`.
-  Use `imgaug.data.quokka_bounding_boxes()` instead.
-* `imgaug.imgaug.quokka_polygons()`.
-  Use `imgaug.data.quokka_polygons()` instead.
+* `augimg.augimg.quokka()`.
+  Use `augimg.data.quokka()` instead.
+* `augimg.augimg.quokka_square()`.
+  Use `augimg.data.quokka_square()` instead.
+* `augimg.augimg.quokka_heatmap()`.
+  Use `augimg.data.quokka_heatmap()` instead.
+* `augimg.augimg.quokka_segmentation_map()`.
+  Use `augimg.data.quokka_segmentation_map()` instead.
+* `augimg.augimg.quokka_keypoints()`.
+  Use `augimg.data.quokka_keypoints()` instead.
+* `augimg.augimg.quokka_bounding_boxes()`.
+  Use `augimg.data.quokka_bounding_boxes()` instead.
+* `augimg.augimg.quokka_polygons()`.
+  Use `augimg.data.quokka_polygons()` instead.
 
 Removed Constants:
-* [rarely breaking] `imgaug.imgaug.FILE_DIR`
-* [rarely breaking] `imgaug.imgaug.QUOKKA_FP`
-* [rarely breaking] `imgaug.imgaug.QUOKKA_ANNOTATIONS_FP`
-* [rarely breaking] `imgaug.imgaug.QUOKKA_DEPTH_MAP_HALFRES_FP`
+* [rarely breaking] `augimg.augimg.FILE_DIR`
+* [rarely breaking] `augimg.augimg.QUOKKA_FP`
+* [rarely breaking] `augimg.augimg.QUOKKA_ANNOTATIONS_FP`
+* [rarely breaking] `augimg.augimg.QUOKKA_DEPTH_MAP_HALFRES_FP`

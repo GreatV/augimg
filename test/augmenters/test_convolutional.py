@@ -15,11 +15,11 @@ except ImportError:
 import numpy as np
 import six.moves as sm
 
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug import dtypes as iadt
-from imgaug import random as iarandom
-from imgaug.testutils import reseed, runtest_pickleable_uint8_img
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg import dtypes as iadt
+from augimg import random as iarandom
+from augimg.testutils import reseed, runtest_pickleable_uint8_img
 
 
 # TODO add tests for EdgeDetect

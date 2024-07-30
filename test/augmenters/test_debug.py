@@ -21,11 +21,11 @@ import numpy as np
 import cv2
 import imageio
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import random as iarandom
-from imgaug.testutils import reseed, TemporaryDirectory
-import imgaug.augmenters.debug as debuglib
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import random as iarandom
+from augimg.testutils import reseed, TemporaryDirectory
+import augimg.augmenters.debug as debuglib
 
 
 class Test_draw_debug_image(unittest.TestCase):

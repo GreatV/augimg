@@ -14,7 +14,7 @@ except ImportError:
 
 import numpy as np
 
-from imgaug.augmentables.utils import (
+from augimg.augmentables.utils import (
     interpolate_points,
     interpolate_point_pair,
     interpolate_points_by_max_distance,

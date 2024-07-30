@@ -15,7 +15,7 @@ except ImportError:
 import numpy as np
 import six.moves as sm
 
-import imgaug as ia
+import augimg as ia
 
 
 # TODO add tests for:

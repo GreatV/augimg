@@ -1,6 +1,6 @@
 from __future__ import print_function, division, absolute_import
-import imgaug as ia
-import imgaug.augmenters as iaa
+import augimg as ia
+import augimg.augmenters as iaa
 import timeit
 
 
@@ -19,8 +19,8 @@ def main():
         "iaa.generate_jigsaw_destinations(10, 10, 2, rng)",
         number=128,
         setup=(
-            "import imgaug.augmenters as iaa; "
-            "import imgaug.random as iarandom; "
+            "import augimg.augmenters as iaa; "
+            "import augimg.random as iarandom; "
             "rng = iarandom.RNG(0)"
         )
     )

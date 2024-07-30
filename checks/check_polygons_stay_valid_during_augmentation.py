@@ -1,9 +1,9 @@
 from __future__ import print_function, division
 import numpy as np
 
-import imgaug as ia
-import imgaug.augmenters as iaa
-from imgaug.augmentables.polys import Polygon, PolygonsOnImage
+import augimg as ia
+import augimg.augmenters as iaa
+from augimg.augmentables.polys import Polygon, PolygonsOnImage
 
 
 def main():

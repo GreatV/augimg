@@ -44,7 +44,7 @@ their outputs back to the input sizes.
 
 The exact changes to default values are listed below.
 
-**imgaug.arithmetic**
+**augimg.arithmetic**
   
   * `Add`
     * `value`: `0` -> `(-20, 20)`
@@ -99,14 +99,14 @@ The exact changes to default values are listed below.
   * `JpegCompression`:
     * `compression`: `50` -> `(0, 100)`
 
-**imgaug.blend**
+**augimg.blend**
 
   * `BlendAlpha`
     * `factor`: `0` -> `(0.0, 1.0)`
   * `BlendAlphaElementwise`
     * `factor`: `0` -> `(0.0, 1.0)`
 
-**imgaug.blur**
+**augimg.blur**
 
   * `GaussianBlur`:
     * `sigma`: `0` -> `(0.0, 3.0)`
@@ -119,7 +119,7 @@ The exact changes to default values are listed below.
   * `MotionBlur`:
     * `k`: `5` -> `(3, 7)`
 
-**imgaug.color**
+**augimg.color**
 
   * `MultiplyHueAndSaturation`:
     * `mul_hue`: `None` -> `(0.5, 1.5)`
@@ -136,7 +136,7 @@ The exact changes to default values are listed below.
   * `Grayscale`:
     * `alpha`: `0` -> `1`
 
-**imgaug.contrast**
+**augimg.contrast**
 
   * `GammaContrast`:
     * `gamma`: `1` -> `(0.7, 1.7)` 
@@ -167,14 +167,14 @@ The exact changes to default values are listed below.
   * `DirectedEdgeDetect`:
     * `alpha`: `0` -> `(0.0, 0.75)`
 
-**imgaug.flip**
+**augimg.flip**
 
   * `Fliplr`:
     * `p`: `0` -> `1`
   * `Flipud`:
     * `p`: `0` -> `1`
 
-**imgaug.geometric**
+**augimg.geometric**
 
   * `Affine`:
     * `scale`: `1` -> `{"x": (0.9, 1.1), "y": (0.9, 1.1)}`
@@ -196,7 +196,7 @@ The exact changes to default values are listed below.
   * `Rot90`:
     * `k`: `(no default)` -> `k=1`
 
-**imgaug.pooling**
+**augimg.pooling**
 
   * `AveragePooling`:
     * `k`: `(no default)` -> `(1, 5)`
@@ -207,7 +207,7 @@ The exact changes to default values are listed below.
   * `MedianPooling`:
     * `k`: `(no default)` -> `(1, 5)`
 
-**imgaug.segmentation**
+**augimg.segmentation**
  
   * `Superpixels`:
     * `p_replace`: `0.0` -> `(0.5, 1.0)`
@@ -226,7 +226,7 @@ The exact changes to default values are listed below.
     * `p_drop_points`: `0.4` -> `(0.0, 0.5)`
     * `p_replace`: `1.0` -> `(0.5, 1.0)`
 
-**imgaug.size**
+**augimg.size**
 
   * `CropAndPad`:
     * `percent`: `None` -> `(-0.1, 0.1)`

@@ -4,8 +4,8 @@ import cv2
 import numpy as np
 from skimage import data
 
-import imgaug as ia
-from imgaug import augmenters as iaa
+import augimg as ia
+from augimg import augmenters as iaa
 
 TIME_PER_STEP = 20000
 NB_AUGS_PER_IMAGE = 10
@@ -86,7 +86,7 @@ def main():
         cv2.waitKey(TIME_PER_STEP)
 
 
-# TODO could be replaced by imgaug.draw_grid()?
+# TODO could be replaced by augimg.draw_grid()?
 def to_grid(rows, rows_kps):
     if rows_kps is None:
         rows = [np.hstack(list(row)) for row in rows]

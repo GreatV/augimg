@@ -19,10 +19,10 @@ was actually provided.)
 * Added warnings for probably-wrong image inputs in
   `augment_image()`, `augment_images()`, `augment()` (and its
   alias `__call__()`).
-* Added module `imgaug.augmenters.base`.
+* Added module `augimg.augmenters.base`.
 * Added warning
-  `imgaug.augmenters.base.SuspiciousMultiImageShapeWarning`.
+  `augimg.augmenters.base.SuspiciousMultiImageShapeWarning`.
 * Added warning
-  `imgaug.augmenters.base.SuspiciousSingleImageShapeWarning`.
-* Added `imgaug.testutils.assertWarns`, similar to `unittest`'s
+  `augimg.augmenters.base.SuspiciousSingleImageShapeWarning`.
+* Added `augimg.testutils.assertWarns`, similar to `unittest`'s
   `assertWarns`, but available in python <3.2.

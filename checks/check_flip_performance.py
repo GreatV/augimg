@@ -167,7 +167,7 @@ def main():
                     "%s _ = aug(image=%s);" % (commands_i, arr_name),
                     setup="import cv2; "
                           "import numpy as np; "
-                          "import imgaug.augmenters as iaa; "
+                          "import augimg.augmenters as iaa; "
                           "arr = np.ones((224, 224, 3), dtype=np.%s); "
                           "aug = %s" % (dt, aug_command),
                     repeat=number, number=1)

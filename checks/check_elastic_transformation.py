@@ -7,10 +7,10 @@ from skimage import data
 from scipy import ndimage
 import cv2
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug.augmenters import meta
-import imgaug.random as iarandom
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg.augmenters import meta
+import augimg.random as iarandom
 
 
 def main():

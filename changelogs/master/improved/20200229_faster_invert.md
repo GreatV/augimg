@@ -1,7 +1,7 @@
 # Improved Performance of `invert_()` #631
 
 This patch improves the performance of
-`imgaug.augmenters.arithmetic.invert_()` for `uint8`
+`augimg.augmenters.arithmetic.invert_()` for `uint8`
 images. The update is expected to improve the
 performance by a factor of 4.5x to 5.3x (more for
 smaller images) if no threshold is provided and by

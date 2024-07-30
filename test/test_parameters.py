@@ -23,10 +23,10 @@ import skimage.morphology
 import scipy
 import scipy.special
 
-import imgaug as ia
-import imgaug.random as iarandom
-from imgaug import parameters as iap
-from imgaug.testutils import reseed, is_parameter_instance
+import augimg as ia
+import augimg.random as iarandom
+from augimg import parameters as iap
+from augimg.testutils import reseed, is_parameter_instance
 
 
 def _eps(arr):
@@ -508,7 +508,7 @@ class Test_handle_categorical_string_param(unittest.TestCase):
             _ = iap.handle_categorical_string_param(
                 False, "foo", ["class1"])
 
-        expected = "Expected parameter 'foo' to be imgaug.ALL"
+        expected = "Expected parameter 'foo' to be augimg.ALL"
         assert expected in str(ctx.exception)
 
 
@@ -606,7 +606,7 @@ class Test_draw_distributions_grid(unittest.TestCase):
 
         draw_grid_mock = mock.Mock()
         draw_grid_mock.return_value = np.zeros((4, 3, 2), dtype=np.uint8)
-        with mock.patch('imgaug.imgaug.draw_grid', draw_grid_mock):
+        with mock.patch('augimg.augimg.draw_grid', draw_grid_mock):
             grid_observed = iap.draw_distributions_grid(
                 params, rows=2, cols=3, graph_sizes=(20, 21),
                 sample_sizes=[(1, 2), (3, 4)], titles=["A", "B"])

@@ -19,10 +19,10 @@ import PIL.ImageOps
 import PIL.ImageEnhance
 import PIL.ImageFilter
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import random as iarandom
-from imgaug.testutils import reseed, runtest_pickleable_uint8_img, assertWarns
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import random as iarandom
+from augimg.testutils import reseed, runtest_pickleable_uint8_img, assertWarns
 
 
 def _test_shape_hw(func):
@@ -52,7 +52,7 @@ def _test_shape_hw1(func):
 
 
 class Test_solarize_(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.arithmetic.invert_")
+    @mock.patch("augimg.augmenters.arithmetic.invert_")
     def test_mocked_defaults(self, mock_sol):
         arr = np.zeros((1,), dtype=np.uint8)
         mock_sol.return_value = "foo"
@@ -65,7 +65,7 @@ class Test_solarize_(unittest.TestCase):
         assert kwargs["threshold"] == 128
         assert observed == "foo"
 
-    @mock.patch("imgaug.augmenters.arithmetic.invert_")
+    @mock.patch("augimg.augmenters.arithmetic.invert_")
     def test_mocked(self, mock_sol):
         arr = np.zeros((1,), dtype=np.uint8)
         mock_sol.return_value = "foo"
@@ -1001,7 +1001,7 @@ class TestEqualize(unittest.TestCase):
     def setUp(self):
         reseed()
 
-    @mock.patch("imgaug.augmenters.pillike.equalize_")
+    @mock.patch("augimg.augmenters.pillike.equalize_")
     def test_mocked(self, mock_eq):
         image = np.arange(1*1*3).astype(np.uint8).reshape((1, 1, 3))
         mock_eq.return_value = np.copy(image)
@@ -1037,7 +1037,7 @@ class TestAutocontrast(unittest.TestCase):
     def setUp(self):
         reseed()
 
-    @mock.patch("imgaug.augmenters.pillike.autocontrast")
+    @mock.patch("augimg.augmenters.pillike.autocontrast")
     def test_mocked(self, mock_auto):
         image = np.mod(np.arange(10*10*3), 255)
         image = image.reshape((10, 10, 3)).astype(np.uint8)
@@ -1049,7 +1049,7 @@ class TestAutocontrast(unittest.TestCase):
         assert np.array_equal(mock_auto.call_args_list[0][0][0], image)
         assert mock_auto.call_args_list[0][0][1] == 15
 
-    @mock.patch("imgaug.augmenters.pillike.autocontrast")
+    @mock.patch("augimg.augmenters.pillike.autocontrast")
     def test_per_channel(self, mock_auto):
         image = np.mod(np.arange(10*10*1), 255)
         image = image.reshape((10, 10, 1)).astype(np.uint8)
@@ -1107,7 +1107,7 @@ class TestEnhanceColor(unittest.TestCase):
         aug = iaa.pillike.EnhanceColor(0.75)
         assert np.isclose(aug.factor.value, 0.75)
 
-    @mock.patch("imgaug.augmenters.pillike.enhance_color")
+    @mock.patch("augimg.augmenters.pillike.enhance_color")
     def test_mocked(self, mock_pilcol):
         aug = iaa.pillike.EnhanceColor(0.75)
         image = np.zeros((1, 1, 3), dtype=np.uint8)
@@ -1158,7 +1158,7 @@ class TestEnhanceContrast(unittest.TestCase):
     def setUp(self):
         reseed()
 
-    @mock.patch("imgaug.augmenters.pillike.enhance_contrast")
+    @mock.patch("augimg.augmenters.pillike.enhance_contrast")
     def test_mocked(self, mock_pilco):
         aug = iaa.pillike.EnhanceContrast(0.75)
         image = np.zeros((1, 1, 3), dtype=np.uint8)
@@ -1205,7 +1205,7 @@ class TestEnhanceBrightness(unittest.TestCase):
     def setUp(self):
         reseed()
 
-    @mock.patch("imgaug.augmenters.pillike.enhance_brightness")
+    @mock.patch("augimg.augmenters.pillike.enhance_brightness")
     def test_mocked(self, mock_pilbr):
         aug = iaa.pillike.EnhanceBrightness(0.75)
         image = np.zeros((1, 1, 3), dtype=np.uint8)
@@ -1247,7 +1247,7 @@ class TestEnhanceSharpness(unittest.TestCase):
     def setUp(self):
         reseed()
 
-    @mock.patch("imgaug.augmenters.pillike.enhance_sharpness")
+    @mock.patch("augimg.augmenters.pillike.enhance_sharpness")
     def test_mocked(self, mock_pilsh):
         aug = iaa.pillike.EnhanceSharpness(0.75)
         image = np.zeros((3, 3, 3), dtype=np.uint8)
@@ -1434,7 +1434,7 @@ class TestAffine(unittest.TestCase):
     def setUp(self):
         reseed()
 
-    @mock.patch("imgaug.augmenters.pillike.warp_affine")
+    @mock.patch("augimg.augmenters.pillike.warp_affine")
     def test_mocked(self, mock_pilaff):
         aug = iaa.pillike.Affine(
             scale={"x": 1.25, "y": 1.5},
@@ -1469,7 +1469,7 @@ class TestAffine(unittest.TestCase):
         assert np.isclose(kwargs["center"][1], 0.2)
         assert np.all(image_aug == 128)
 
-    @mock.patch("imgaug.augmenters.pillike.warp_affine")
+    @mock.patch("augimg.augmenters.pillike.warp_affine")
     def test_mocked_translate_percent(self, mock_pilaff):
         aug = iaa.pillike.Affine(
             translate_percent={"x": 1.2, "y": 1.5}

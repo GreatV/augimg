@@ -15,10 +15,10 @@ except ImportError:
 import numpy as np
 import cv2
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug.testutils import (reseed, runtest_pickleable_uint8_img,
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg.testutils import (reseed, runtest_pickleable_uint8_img,
                               is_parameter_instance)
 
 

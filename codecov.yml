@@ -42,4 +42,4 @@ comment:
   branches: *
 
 ignore:
-  imgaug/external/*.py
+  augimg/external/*.py

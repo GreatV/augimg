@@ -14,11 +14,11 @@ except ImportError:
 
 import numpy as np
 
-import imgaug as ia
-from imgaug.testutils import reseed, wrap_shift_deprecation, assertWarns
-from imgaug.augmentables.lines import LineString, LineStringsOnImage
-from imgaug.augmentables.kps import Keypoint
-from imgaug.augmentables.heatmaps import HeatmapsOnImage
+import augimg as ia
+from augimg.testutils import reseed, wrap_shift_deprecation, assertWarns
+from augimg.augmentables.lines import LineString, LineStringsOnImage
+from augimg.augmentables.kps import Keypoint
+from augimg.augmentables.heatmaps import HeatmapsOnImage
 
 
 class TestLineString_project_(unittest.TestCase):
@@ -938,7 +938,7 @@ class TestLineString(unittest.TestCase):
     def test_draw_heatmap_array_calls_other_drawing_functions(self):
         ls = LineString([(0, 1), (9, 1)])
 
-        module_name = "imgaug.augmentables.lines."
+        module_name = "augimg.augmentables.lines."
         line_fname = "%sLineString.draw_lines_heatmap_array" % (module_name,)
         points_fname = "%sLineString.draw_points_heatmap_array" % (module_name,)
         with mock.patch(line_fname, return_value=1) as mock_line, \
@@ -1320,7 +1320,7 @@ class TestLineString(unittest.TestCase):
     def test_draw_on_image_with_mocking(self):
         ls = LineString([(0, 1), (9, 1)])
 
-        module_name = "imgaug.augmentables.lines."
+        module_name = "augimg.augmentables.lines."
         line_fname = "%sLineString.draw_lines_on_image" % (module_name,)
         points_fname = "%sLineString.draw_points_on_image" % (module_name,)
         with mock.patch(line_fname, return_value=1) as mock_line, \
@@ -1613,7 +1613,7 @@ class TestLineString(unittest.TestCase):
     # TODO change this after the segmap PR was merged
 
     def test_segmentation_map(self):
-        from imgaug.augmentables.segmaps import SegmentationMapsOnImage
+        from augimg.augmentables.segmaps import SegmentationMapsOnImage
         ls = LineString([(0, 5), (5, 5)])
         observed = ls.to_segmentation_map((10, 10))
         assert isinstance(observed, SegmentationMapsOnImage)

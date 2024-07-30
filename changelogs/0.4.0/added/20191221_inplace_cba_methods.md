@@ -19,7 +19,7 @@
 * Added `BoundingBoxesOnImage.remove_out_of_image_()`.
 * Added `BoundingBoxesOnImage.remove_out_of_image_fraction_()`.
 * Added `BoundingBoxesOnImage.shift_()`.
-* Added `imgaug.augmentables.utils.project_coords_()`.
+* Added `augimg.augmentables.utils.project_coords_()`.
 * Added `LineString.project_()`.
 * Added `LineString.shift_()`.
 * Added `LineStringsOnImage.on_()`.

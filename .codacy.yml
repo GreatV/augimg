@@ -3,7 +3,7 @@ exclude_paths:
   - test/augmenters/*
   - test/augmentables/*
   - checks/*
-  - imgaug/external/*
+  - augimg/external/*
   - old_version/*
   - generate_documentation_images.py
   - generate_example_images.py

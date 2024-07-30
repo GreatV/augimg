@@ -13,8 +13,8 @@ except ImportError:
     import mock
 
 import numpy as np
-import imgaug as ia
-from imgaug.testutils import assertWarns
+import augimg as ia
+from augimg.testutils import assertWarns
 
 
 class TestKeypoint_project_(unittest.TestCase):
@@ -384,7 +384,7 @@ class TestKeypoint(unittest.TestCase):
 
         assert not equal
 
-    @mock.patch("imgaug.augmentables.kps.Keypoint.coords_almost_equals")
+    @mock.patch("augimg.augmentables.kps.Keypoint.coords_almost_equals")
     def test_almost_equals(self, mock_cae):
         mock_cae.return_value = "foo"
         kp1 = ia.Keypoint(x=1, y=1.5)

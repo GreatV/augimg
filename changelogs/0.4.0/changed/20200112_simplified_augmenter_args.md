@@ -15,7 +15,7 @@ necessary if you want your generated samples to be dependent on
 an initial seed or random state as that is *always* the case
 anyways. You only have to manually set the seed, either
 augmenter-specific via the `seed` parameter or global via
-`imgaug.random.seed()` (affects only augmenters without their
+`augimg.random.seed()` (affects only augmenters without their
 own seed).)
 
 `random_state` was renamed to `seed` as providing a seed value

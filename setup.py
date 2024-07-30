@@ -9,15 +9,13 @@ neural networks. Supports the augmentation of images, keypoints/landmarks, bound
 maps in a variety of different ways."""
 
 INSTALL_REQUIRES = [
-    "six",
-    "numpy>=1.15",
+    "numpy",
     "scipy",
     "Pillow",
     "matplotlib",
-    "scikit-image>=0.14.2",
+    "scikit-image",
     "opencv-python-headless",
-    "imageio<=2.6.1; python_version<'3.5'",
-    "imageio; python_version>='3.5'",
+    "imageio",
     "Shapely"
 ]
 
@@ -57,19 +55,19 @@ def get_install_requirements(main_requires, alternative_requires):
 INSTALL_REQUIRES = get_install_requirements(INSTALL_REQUIRES, ALT_INSTALL_REQUIRES)
 
 setup(
-    name="imgaug",
-    version="0.4.0",
-    author="Alexander Jung",
-    author_email="kontakt@ajung.name",
-    url="https://github.com/aleju/imgaug",
-    download_url="https://github.com/aleju/imgaug/archive/0.4.0.tar.gz",
+    name="augimg",
+    version="0.5.0",
+    author="Alexander Jung, Wang Xin",
+    author_email="kontakt@ajung.name, xinwang614@gmail.com",
+    url="https://github.com/greatv/augimg",
+    download_url="https://github.com/greatv/augimg/archive/0.5.0.tar.gz",
     install_requires=INSTALL_REQUIRES,
     packages=find_packages(),
     include_package_data=True,
     package_data={
         "": ["LICENSE", "README.md", "requirements.txt"],
-        "imgaug": ["DejaVuSans.ttf", "quokka.jpg", "quokka_annotations.json", "quokka_depth_map_halfres.png"],
-        "imgaug.checks": ["README.md"]
+        "augimg": ["DejaVuSans.ttf", "quokka.jpg", "quokka_annotations.json", "quokka_depth_map_halfres.png"],
+        "augimg.checks": ["README.md"]
     },
     license="MIT",
     description="Image augmentation library for deep neural networks",
@@ -84,13 +82,11 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Topic :: Scientific/Engineering :: Image Recognition",
         "Topic :: Software Development :: Libraries :: Python Modules"

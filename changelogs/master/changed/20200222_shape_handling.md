@@ -21,7 +21,7 @@ now on accepted. Other arrays (e.g. 1-dimensional ones)
 will be rejected with an assertion error.
 
 Add functions:
-* `imgaug.augmentables.utils.normalize_imglike_shape()`.
+* `augimg.augmentables.utils.normalize_imglike_shape()`.
 
 List of deprecations:
 * `numpy.ndarray` as value of parameter `shape` in

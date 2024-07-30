@@ -41,41 +41,41 @@ used by all blending augmenters, have now the names `foreground`
 and `background`.
 
 List of changes:
-* Added `imgaug.augmenters.blend.BlendAlphaMask`, which uses
+* Added `augimg.augmenters.blend.BlendAlphaMask`, which uses
   a mask generator instance to generate per batch alpha masks and
   then alpha-blends using these masks.
-* Added `imgaug.augmenters.blend.BlendAlphaSomeColors`.
-* Added `imgaug.augmenters.blend.BlendAlphaHorizontalLinearGradient`.
-* Added `imgaug.augmenters.blend.BlendAlphaVerticalLinearGradient`.
-* Added `imgaug.augmenters.blend.BlendAlphaRegularGrid`.
-* Added `imgaug.augmenters.blend.BlendAlphaCheckerboard`.
-* Added `imgaug.augmenters.blend.BlendAlphaSegMapClassIds`.
-* Added `imgaug.augmenters.blend.BlendAlphaBoundingBoxes`.
-* Added `imgaug.augmenters.blend.IBatchwiseMaskGenerator`,
+* Added `augimg.augmenters.blend.BlendAlphaSomeColors`.
+* Added `augimg.augmenters.blend.BlendAlphaHorizontalLinearGradient`.
+* Added `augimg.augmenters.blend.BlendAlphaVerticalLinearGradient`.
+* Added `augimg.augmenters.blend.BlendAlphaRegularGrid`.
+* Added `augimg.augmenters.blend.BlendAlphaCheckerboard`.
+* Added `augimg.augmenters.blend.BlendAlphaSegMapClassIds`.
+* Added `augimg.augmenters.blend.BlendAlphaBoundingBoxes`.
+* Added `augimg.augmenters.blend.IBatchwiseMaskGenerator`,
   an interface for classes generating masks on a batch-by-batch
   basis.
-* Added `imgaug.augmenters.blend.StochasticParameterMaskGen`,
+* Added `augimg.augmenters.blend.StochasticParameterMaskGen`,
   a helper to generate masks from `StochasticParameter` instances.
-* Added `imgaug.augmenters.blend.SomeColorsMaskGen`, a generator
+* Added `augimg.augmenters.blend.SomeColorsMaskGen`, a generator
   that produces masks marking randomly chosen colors in images.
-* Added `imgaug.augmenters.blend.HorizontalLinearGradientMaskGen`,
+* Added `augimg.augmenters.blend.HorizontalLinearGradientMaskGen`,
   a linear gradient mask generator.
-* Added `imgaug.augmenters.blend.VerticalLinearGradientMaskGen`,
+* Added `augimg.augmenters.blend.VerticalLinearGradientMaskGen`,
   a linear gradient mask generator.
-* Added `imgaug.augmenters.blend.RegularGridMaskGen`,
+* Added `augimg.augmenters.blend.RegularGridMaskGen`,
   a checkerboard-like mask generator where every grid cell has
   a random alpha value.
-* Added `imgaug.augmenters.blend.CheckerboardMaskGen`,
+* Added `augimg.augmenters.blend.CheckerboardMaskGen`,
   a checkerboard-like mask generator where every grid cell has
   the opposite alpha value of its 4-neighbours.
-* Added `imgaug.augmenters.blend.SegMapClassIdsMaskGen`, a
+* Added `augimg.augmenters.blend.SegMapClassIdsMaskGen`, a
   segmentation map-based mask generator.
-* Added `imgaug.augmenters.blend.BoundingBoxesMaskGen`, a bounding
+* Added `augimg.augmenters.blend.BoundingBoxesMaskGen`, a bounding
   box-based mask generator.
-* Added `imgaug.augmenters.blend.InvertMaskGen`, an mask generator
+* Added `augimg.augmenters.blend.InvertMaskGen`, an mask generator
   that inverts masks produces by child generators.
-* Changed `imgaug.parameters.SimplexNoise` and
-  `imgaug.parameters.FrequencyNoise` to also accept `(H, W, C)`
+* Changed `augimg.parameters.SimplexNoise` and
+  `augimg.parameters.FrequencyNoise` to also accept `(H, W, C)`
   sampling shapes, instead of only `(H, W)`.
 * Refactored `AlphaElementwise` to be a wrapper around
   `BlendAlphaMask`.
@@ -90,7 +90,7 @@ List of changes:
 * Renamed arguments `first` and `second` to `foreground` and `background`
   in `BlendAlpha`, `BlendAlphaElementwise`, `BlendAlphaSimplexNoise` and
   `BlendAlphaFrequencyNoise`.
-* Changed `imgaug.parameters.handle_categorical_string_param()` to allow
+* Changed `augimg.parameters.handle_categorical_string_param()` to allow
   parameter `valid_values` to be `None`.
 * Fixed a wrong error message in
-  `imgaug.augmenters.color.change_colorspace_()`.
+  `augimg.augmenters.color.change_colorspace_()`.

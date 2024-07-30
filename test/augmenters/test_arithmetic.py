@@ -18,12 +18,12 @@ import numpy as np
 import cv2
 import six.moves as sm
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug import dtypes as iadt
-from imgaug import random as iarandom
-from imgaug.testutils import (
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg import dtypes as iadt
+from augimg import random as iarandom
+from augimg.testutils import (
     array_equal_lists,
     keypoints_equal,
     reseed,
@@ -31,9 +31,9 @@ from imgaug.testutils import (
     assertWarns,
     is_parameter_instance
 )
-import imgaug.augmenters.arithmetic as arithmetic_lib
-import imgaug.augmenters.contrast as contrast_lib
-from imgaug.augmenters.arithmetic import (
+import augimg.augmenters.arithmetic as arithmetic_lib
+import augimg.augmenters.contrast as contrast_lib
+from augimg.augmenters.arithmetic import (
     _add_elementwise_cv2_to_uint8,
     _multiply_scalar_to_uint8_cv2_mul_,
     _multiply_elementwise_to_uint8_,
@@ -475,7 +475,7 @@ class Test_multiply_elementwise_to_non_uint8(unittest.TestCase):
 
 
 class Test_cutout(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.arithmetic.cutout_")
+    @mock.patch("augimg.augmenters.arithmetic.cutout_")
     def test_mocked(self, mock_inplace):
         image = np.mod(np.arange(100*100*3), 255).astype(np.uint8).reshape(
             (100, 100, 3))
@@ -532,11 +532,11 @@ class Test_cutout_(unittest.TestCase):
         assert overlap_inside >= 1.0 - 1e-4
         assert overlap_outside >= 1.0 - 1e-4
 
-    @mock.patch("imgaug.augmenters.arithmetic._fill_rectangle_constant_")
+    @mock.patch("augimg.augmenters.arithmetic._fill_rectangle_constant_")
     def test_fill_mode_constant_mocked(self, mock_fill):
         self._test_with_fill_mode_mocked("constant", mock_fill)
 
-    @mock.patch("imgaug.augmenters.arithmetic._fill_rectangle_gaussian_")
+    @mock.patch("augimg.augmenters.arithmetic._fill_rectangle_gaussian_")
     def test_fill_mode_gaussian_mocked(self, mock_fill):
         self._test_with_fill_mode_mocked("gaussian", mock_fill)
 
@@ -2394,7 +2394,7 @@ class TestCutout(unittest.TestCase):
         aug = iaa.Cutout(fill_mode=param)
         assert aug.fill_mode is param
 
-    @mock.patch("imgaug.augmenters.arithmetic.cutout_")
+    @mock.patch("augimg.augmenters.arithmetic.cutout_")
     def test_mocked__squared_false(self, mock_apply):
         aug = iaa.Cutout(nb_iterations=2,
                          position=(0.5, 0.6),
@@ -2428,7 +2428,7 @@ class TestCutout(unittest.TestCase):
             assert np.isclose(kwargs["fill_per_channel"], 1.0)
             assert isinstance(kwargs["seed"], iarandom.RNG)
 
-    @mock.patch("imgaug.augmenters.arithmetic.cutout_")
+    @mock.patch("augimg.augmenters.arithmetic.cutout_")
     def test_mocked__squared_true(self, mock_apply):
         aug = iaa.Cutout(nb_iterations=2,
                          position=(0.5, 0.6),
@@ -5312,7 +5312,7 @@ class TestCoarsePepper(unittest.TestCase):
 
 
 class Test_invert(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.arithmetic.invert_")
+    @mock.patch("augimg.augmenters.arithmetic.invert_")
     def test_mocked_defaults(self, mock_invert):
         mock_invert.return_value = "foo"
         arr = np.zeros((1,), dtype=np.uint8)
@@ -5326,7 +5326,7 @@ class Test_invert(unittest.TestCase):
         assert args[1]["threshold"] is None
         assert args[1]["invert_above_threshold"] is True
 
-    @mock.patch("imgaug.augmenters.arithmetic.invert_")
+    @mock.patch("augimg.augmenters.arithmetic.invert_")
     def test_mocked(self, mock_invert):
         mock_invert.return_value = "foo"
         arr = np.zeros((1,), dtype=np.uint8)
@@ -5816,7 +5816,7 @@ class Test__invert_uint8_subtract_(unittest.TestCase):
 
 
 class Test_solarize(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.arithmetic.solarize_")
+    @mock.patch("augimg.augmenters.arithmetic.solarize_")
     def test_mocked_defaults(self, mock_sol):
         arr = np.zeros((1,), dtype=np.uint8)
         mock_sol.return_value = "foo"
@@ -5830,7 +5830,7 @@ class Test_solarize(unittest.TestCase):
         assert kwargs["threshold"] == 128
         assert observed == "foo"
 
-    @mock.patch("imgaug.augmenters.arithmetic.solarize_")
+    @mock.patch("augimg.augmenters.arithmetic.solarize_")
     def test_mocked(self, mock_sol):
         arr = np.zeros((1,), dtype=np.uint8)
         mock_sol.return_value = "foo"
@@ -5857,7 +5857,7 @@ class Test_solarize(unittest.TestCase):
 
 
 class Test_solarize_(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.arithmetic.invert_")
+    @mock.patch("augimg.augmenters.arithmetic.invert_")
     def test_mocked_defaults(self, mock_sol):
         arr = np.zeros((1,), dtype=np.uint8)
         mock_sol.return_value = "foo"
@@ -5870,7 +5870,7 @@ class Test_solarize_(unittest.TestCase):
         assert kwargs["threshold"] == 128
         assert observed == "foo"
 
-    @mock.patch("imgaug.augmenters.arithmetic.invert_")
+    @mock.patch("augimg.augmenters.arithmetic.invert_")
     def test_mocked(self, mock_sol):
         arr = np.zeros((1,), dtype=np.uint8)
         mock_sol.return_value = "foo"

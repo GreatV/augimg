@@ -15,13 +15,11 @@ cache:
     - $HOME/.cache/pip
 
 python:
-  - "2.7"
-  # - "3.2"  # downloads np 1.17 on travis (?!), which doesn't support 3.2
-  # - "3.3"  # downloads np 1.17 on travis (?!), which doesn't support 3.3
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  # - "3.7"  # python version cannot be installed on travis
+  - "3.9"
+  - "3.10"
+  - "3.11"
+  - "3.12"
+
 
 before_install:
   - sudo apt-get update -qq
@@ -58,7 +56,7 @@ before_script:
 
 script:
   - python -m pytest --verbose --xdoctest-modules --ignore="test/run_all.py" -s --durations=50 -Walways
-  - coverage run --source imgaug -m pytest --verbose --xdoctest-modules --ignore="test/run_all.py" -Walways
+  - coverage run --source augimg -m pytest --verbose --xdoctest-modules --ignore="test/run_all.py" -Walways
 
 # some steps are now done in github action
 after_success:

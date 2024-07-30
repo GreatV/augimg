@@ -13,7 +13,7 @@ impact on `Superpixels` and `segment_voronoi()` (i.e.
 `Voronoi`).
 
 Added functions:
-* `imgaug.augmenters.segmentation.replace_segments_`
+* `augimg.augmenters.segmentation.replace_segments_`
 
 Added classes:
-* `imgaug.testutils.temporary_constants` (context)
+* `augimg.testutils.temporary_constants` (context)

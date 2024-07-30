@@ -6,9 +6,9 @@ import multiprocessing
 import numpy as np
 from skimage import data
 
-import imgaug as ia
-import imgaug.multicore as multicore
-from imgaug import augmenters as iaa
+import augimg as ia
+import augimg.multicore as multicore
+from augimg import augmenters as iaa
 
 
 class PoolWithMarkedWorker(multicore.Pool):

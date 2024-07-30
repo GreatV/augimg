@@ -17,10 +17,10 @@
 
 * Added `KeypointsOnImage.clip_out_of_image()`.
 
-* Added `imgaug.augmenters.meta.RemoveCBAsByOutOfImageFraction`.
+* Added `augimg.augmenters.meta.RemoveCBAsByOutOfImageFraction`.
   Removes coordinate-based augmentables (e.g. BBs) that have at least a
   specified fraction of their area outside of the image plane.
-* Added `imgaug.augmenters.meta.ClipCBAsToImagePlanes`.
+* Added `augimg.augmenters.meta.ClipCBAsToImagePlanes`.
   Clips off all parts from coordinate-based augmentables (e.g. BBs) that are
   outside of the corresponding image.
 

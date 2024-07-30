@@ -15,9 +15,9 @@ except ImportError:
 
 import numpy as np
 
-import imgaug as ia
-import imgaug.data as iadata
-from imgaug.data import _quokka_normalize_extract, _compute_resized_shape
+import augimg as ia
+import augimg.data as iadata
+from augimg.data import _quokka_normalize_extract, _compute_resized_shape
 
 
 class Test__quokka_normalize_extract(unittest.TestCase):

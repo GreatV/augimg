@@ -1,7 +1,7 @@
 from __future__ import print_function, division
-import imgaug as ia
+import augimg as ia
 # TODO ForceSign
-from imgaug.parameters import (
+from augimg.parameters import (
     Binomial, Choice, DiscreteUniform, Poisson, Normal, Laplace, ChiSquare,
     Weibull, Uniform, Beta, Deterministic, Clip, Discretize, Multiply, Add,
     Divide, Power, Absolute, RandomSign, Positive, Negative,

@@ -18,10 +18,10 @@ import six.moves as sm
 import shapely
 import shapely.geometry
 
-import imgaug as ia
-import imgaug.random as iarandom
-from imgaug.testutils import reseed, wrap_shift_deprecation, assertWarns
-from imgaug.augmentables.polys import _ConcavePolygonRecoverer
+import augimg as ia
+import augimg.random as iarandom
+from augimg.testutils import reseed, wrap_shift_deprecation, assertWarns
+from augimg.augmentables.polys import _ConcavePolygonRecoverer
 
 
 class TestPolygon___init__(unittest.TestCase):
@@ -671,7 +671,7 @@ class TestPolygon_is_out_of_image(unittest.TestCase):
 
 
 class TestPolygon_cut_out_of_image(unittest.TestCase):
-    @mock.patch("imgaug.augmentables.polys.Polygon.clip_out_of_image")
+    @mock.patch("augimg.augmentables.polys.Polygon.clip_out_of_image")
     def test_warns_of_deprecation(self, mock_clip):
         with warnings.catch_warnings(record=True) as caught_warnings:
             warnings.simplefilter("always")
@@ -1944,7 +1944,7 @@ class TestPolygon___repr___and___str__(unittest.TestCase):
 
 
 class TestPolygon_coords_almost_equals(unittest.TestCase):
-    @mock.patch("imgaug.augmentables.polys.Polygon.exterior_almost_equals")
+    @mock.patch("augimg.augmentables.polys.Polygon.exterior_almost_equals")
     def test_calls_exterior_almost_equals(self, mock_eae):
         mock_eae.return_value = "foo"
         poly_a = ia.Polygon([(0, 0), (1, 0), (1, 1), (0, 1)])
@@ -1956,7 +1956,7 @@ class TestPolygon_coords_almost_equals(unittest.TestCase):
         mock_eae.assert_called_once_with(poly_b, max_distance=1e-4,
                                          points_per_edge=8)
 
-    @mock.patch("imgaug.augmentables.polys.Polygon.exterior_almost_equals")
+    @mock.patch("augimg.augmentables.polys.Polygon.exterior_almost_equals")
     def test_calls_exterior_almost_equals__no_defaults(self, mock_eae):
         mock_eae.return_value = "foo"
         poly_a = ia.Polygon([(0, 0), (1, 0), (1, 1), (0, 1)])

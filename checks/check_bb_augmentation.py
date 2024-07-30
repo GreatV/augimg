@@ -4,8 +4,8 @@ import imageio
 import numpy as np
 from skimage import data
 
-import imgaug as ia
-from imgaug import augmenters as iaa
+import augimg as ia
+from augimg import augmenters as iaa
 
 NB_ROWS = 10
 NB_COLS = 10

@@ -1,6 +1,6 @@
 # Improve Performance of Alpha-Blending #610
 
-This patch reworks `imgaug.augmenters.blend.blend_alpha()` to
+This patch reworks `augimg.augmenters.blend.blend_alpha()` to
 improve its performance. In the case of a scalar constant alpha
 value and both image inputs (foreground, background) being
 `uint8`, the improved method is roughly 10x faster. In the case
@@ -11,4 +11,4 @@ to 2.0x (`(H,W)` masks are faster for larger images,
 `(H,W,C)` the other way round).
 
 Add functions:
-* `imgaug.augmenters.blend.blend_alpha_()`
+* `augimg.augmenters.blend.blend_alpha_()`

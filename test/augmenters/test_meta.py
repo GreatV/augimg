@@ -28,21 +28,21 @@ import cv2
 import PIL.Image
 import imageio
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug import dtypes as iadt
-from imgaug import random as iarandom
-from imgaug.testutils import (create_random_images, create_random_keypoints,
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg import dtypes as iadt
+from augimg import random as iarandom
+from augimg.testutils import (create_random_images, create_random_keypoints,
                               array_equal_lists, keypoints_equal, reseed,
                               assert_cbaois_equal,
                               runtest_pickleable_uint8_img,
                               TemporaryDirectory, is_parameter_instance)
-from imgaug.augmentables.heatmaps import HeatmapsOnImage
-from imgaug.augmentables.segmaps import SegmentationMapsOnImage
-from imgaug.augmentables.lines import LineString, LineStringsOnImage
-from imgaug.augmentables.polys import _ConcavePolygonRecoverer
-from imgaug.augmentables.batches import _BatchInAugmentation
+from augimg.augmentables.heatmaps import HeatmapsOnImage
+from augimg.augmentables.segmaps import SegmentationMapsOnImage
+from augimg.augmentables.lines import LineString, LineStringsOnImage
+from augimg.augmentables.polys import _ConcavePolygonRecoverer
+from augimg.augmentables.batches import _BatchInAugmentation
 
 
 IS_PY36_OR_HIGHER = (sys.version_info[0] == 3 and sys.version_info[1] >= 6)
@@ -4813,7 +4813,7 @@ class TestAugmenter_pool(unittest.TestCase):
         mock_Pool.return_value = mock_Pool
         mock_Pool.__enter__.return_value = None
         mock_Pool.__exit__.return_value = None
-        with mock.patch("imgaug.multicore.Pool", mock_Pool):
+        with mock.patch("augimg.multicore.Pool", mock_Pool):
             with augseq.pool(processes=2, maxtasksperchild=10, seed=17):
                 pass
 
@@ -6606,7 +6606,7 @@ class TestSomeOf(unittest.TestCase):
         assert got_exception
 
     def test_with_children_that_change_shapes_keep_size_false(self):
-        # test for https://github.com/aleju/imgaug/issues/143
+        # test for https://github.com/greatv/augimg/issues/143
         # (shapes change in child augmenters, leading to problems if input
         # arrays are assumed to stay input arrays)
         image = np.zeros((8, 8, 3), dtype=np.uint8)
@@ -7720,7 +7720,7 @@ class TestSometimes(unittest.TestCase):
         assert observed_repr == expected
 
     def test_shapes_changed_by_children__no_keep_size_non_stochastic(self):
-        # Test for https://github.com/aleju/imgaug/issues/143
+        # Test for https://github.com/greatv/augimg/issues/143
         # (shapes change in child augmenters, leading to problems if input
         # arrays are assumed to stay input arrays)
         def _assert_all_valid_shapes(images):

@@ -9,9 +9,9 @@ todo.txt
 pypi-install-guide.txt
 checks/bb_aug.jpg
 checks/elastic_transformations.jpg
-imgaug/parameters-testcode.py
-imgaug/bak/*
-imgaug/quokka_depth_map.xcf
+augimg/parameters-testcode.py
+augimg/bak/*
+augimg/quokka_depth_map.xcf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -10,8 +10,8 @@ import argparse
 import numpy as np
 from skimage import data
 
-import imgaug as ia
-from imgaug import augmenters as iaa
+import augimg as ia
+from augimg import augmenters as iaa
 
 
 def main():

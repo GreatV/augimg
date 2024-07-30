@@ -16,7 +16,7 @@
 * Added property `Keypoint.coords`.
 * Added method `Keypoint.coords_almost_equals(other)`.
 * Added method `Keypoint.almost_equals(other)`.
-* Added method `imgaug.testutils.assert_cbaois_equal()`.
+* Added method `augimg.testutils.assert_cbaois_equal()`.
 * Added internal `_augment_bounding_boxes()` methods to various augmenters.
   This allows to individually control how bounding boxes are supposed to
   be augmented. Previously, the bounding box augmentation was a wrapper around

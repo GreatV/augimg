@@ -15,11 +15,11 @@ import functools
 
 import numpy as np
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import random as iarandom
-from imgaug import parameters as iap
-from imgaug.testutils import runtest_pickleable_uint8_img
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import random as iarandom
+from augimg import parameters as iap
+from augimg.testutils import runtest_pickleable_uint8_img
 
 # imagecorruptions cannot be installed in <=3.4 due to their
 # scikit-image requirement

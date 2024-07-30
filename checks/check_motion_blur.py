@@ -4,8 +4,8 @@ from itertools import cycle
 import numpy as np
 import cv2
 
-import imgaug as ia
-from imgaug import augmenters as iaa
+import augimg as ia
+from augimg import augmenters as iaa
 
 POINT_SIZE = 5
 DEG_PER_STEP = 2

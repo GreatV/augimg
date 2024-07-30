@@ -17,17 +17,17 @@ except ImportError:
 import numpy as np
 import six.moves as sm
 
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug import dtypes as iadt
-from imgaug import random as iarandom
-from imgaug.testutils import (
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg import dtypes as iadt
+from augimg import random as iarandom
+from augimg.testutils import (
     reseed,
     runtest_pickleable_uint8_img,
     temporary_constants,
     is_parameter_instance
 )
-from imgaug.imgaug import _NUMBA_INSTALLED
+from augimg.augimg import _NUMBA_INSTALLED
 
 
 # On systems without numba we are forced to use numpy-based segment
@@ -36,7 +36,7 @@ _NP_REPLACE = [True, False] if _NUMBA_INSTALLED else [True]
 
 
 def _create_replace_np_context(use_np_replace):
-    cnames = ["imgaug.augmenters.segmentation._NUMBA_INSTALLED"]
+    cnames = ["augimg.augmenters.segmentation._NUMBA_INSTALLED"]
     values = [not use_np_replace]
     return temporary_constants(cnames, values)
 
@@ -554,7 +554,7 @@ class TestVoronoi(unittest.TestCase):
         mock_imresize = mock.MagicMock()
         mock_imresize.return_value = image
 
-        fname = "imgaug.imresize_single_image"
+        fname = "augimg.imresize_single_image"
         with mock.patch(fname, mock_imresize):
             _image_aug = aug(image=image)
 
@@ -568,7 +568,7 @@ class TestVoronoi(unittest.TestCase):
         mock_imresize = mock.MagicMock()
         mock_imresize.return_value = image
 
-        fname = "imgaug.imresize_single_image"
+        fname = "augimg.imresize_single_image"
         with mock.patch(fname, mock_imresize):
             _image_aug = aug(image=image)
 
@@ -582,7 +582,7 @@ class TestVoronoi(unittest.TestCase):
         mock_imresize = mock.MagicMock()
         mock_imresize.return_value = image
 
-        fname = "imgaug.imresize_single_image"
+        fname = "augimg.imresize_single_image"
         with mock.patch(fname, mock_imresize):
             _image_aug = aug(image=image)
 
@@ -597,7 +597,7 @@ class TestVoronoi(unittest.TestCase):
         mock_imresize = mock.MagicMock()
         mock_imresize.return_value = image
 
-        fname = "imgaug.imresize_single_image"
+        fname = "augimg.imresize_single_image"
         with mock.patch(fname, mock_imresize):
             _image_aug = aug(image=image)
 
@@ -650,7 +650,7 @@ class TestVoronoi(unittest.TestCase):
         else:
             mock_segment_voronoi.return_value = image
 
-        fname = "imgaug.augmenters.segmentation.segment_voronoi"
+        fname = "augimg.augmenters.segmentation.segment_voronoi"
         with mock.patch(fname, mock_segment_voronoi):
             image_aug = aug(image=image)
 
@@ -673,7 +673,7 @@ class TestVoronoi(unittest.TestCase):
         mock_segment_voronoi = mock.MagicMock()
         mock_segment_voronoi.return_value = image[..., np.newaxis]
 
-        fname = "imgaug.augmenters.segmentation.segment_voronoi"
+        fname = "augimg.augmenters.segmentation.segment_voronoi"
         with mock.patch(fname, mock_segment_voronoi):
             _image_aug = aug(image=image)
 
@@ -688,7 +688,7 @@ class TestVoronoi(unittest.TestCase):
         mock_segment_voronoi = mock.MagicMock()
         mock_segment_voronoi.return_value = image[..., np.newaxis]
 
-        fname = "imgaug.augmenters.segmentation.segment_voronoi"
+        fname = "augimg.augmenters.segmentation.segment_voronoi"
         with mock.patch(fname, mock_segment_voronoi):
             _image_aug = aug(image=image)
 
@@ -703,7 +703,7 @@ class TestVoronoi(unittest.TestCase):
         mock_segment_voronoi = mock.MagicMock()
         mock_segment_voronoi.return_value = image[..., np.newaxis]
 
-        fname = "imgaug.augmenters.segmentation.segment_voronoi"
+        fname = "augimg.augmenters.segmentation.segment_voronoi"
         with mock.patch(fname, mock_segment_voronoi):
             _image_aug = aug(image=image)
 
@@ -827,7 +827,7 @@ class TestUniformVoronoi(unittest.TestCase):
 
         mock_voronoi = mock.MagicMock()
         mock_voronoi.return_value = mock_voronoi
-        fname = "imgaug.augmenters.segmentation.Voronoi.__init__"
+        fname = "augimg.augmenters.segmentation.Voronoi.__init__"
         with mock.patch(fname, mock_voronoi):
             _ = iaa.UniformVoronoi(
                 100,
@@ -876,7 +876,7 @@ class TestRegularGridVoronoi(unittest.TestCase):
 
         mock_voronoi = mock.MagicMock()
         mock_voronoi.return_value = mock_voronoi
-        fname = "imgaug.augmenters.segmentation.Voronoi.__init__"
+        fname = "augimg.augmenters.segmentation.Voronoi.__init__"
         with mock.patch(fname, mock_voronoi):
             _ = iaa.RegularGridVoronoi(
                 10,
@@ -940,7 +940,7 @@ class TestRelativeRegularGridVoronoi(unittest.TestCase):
 
         mock_voronoi = mock.MagicMock()
         mock_voronoi.return_value = mock_voronoi
-        fname = "imgaug.augmenters.segmentation.Voronoi.__init__"
+        fname = "augimg.augmenters.segmentation.Voronoi.__init__"
         with mock.patch(fname, mock_voronoi):
             _ = iaa.RelativeRegularGridVoronoi(
                 0.1,

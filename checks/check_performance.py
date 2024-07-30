@@ -4,8 +4,8 @@ Run these checks from the project directory (i.e. parent directory) via
     python check_performance.py
 """
 from __future__ import print_function, division
-import imgaug as ia
-from imgaug import augmenters as iaa
+import augimg as ia
+from augimg import augmenters as iaa
 import numpy as np
 import time
 import random

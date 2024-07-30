@@ -24,5 +24,5 @@ is fairly even over all kernel sizes. In the case of 7 or higher,
 it is more significant for smaller images.
 
 Add functions:
-* `imgaug.imgaug.min_pool_()`.
-* `imgaug.imgaug.max_pool_()`.
+* `augimg.augimg.min_pool_()`.
+* `augimg.augimg.max_pool_()`.

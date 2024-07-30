@@ -20,15 +20,15 @@ import skimage
 import skimage.data
 import cv2
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug import dtypes as iadt
-from imgaug.augmenters import contrast as contrast_lib
-from imgaug.testutils import (ArgCopyingMagicMock, keypoints_equal, reseed,
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg import dtypes as iadt
+from augimg.augmenters import contrast as contrast_lib
+from augimg.testutils import (ArgCopyingMagicMock, keypoints_equal, reseed,
                               runtest_pickleable_uint8_img, assertWarns,
                               is_parameter_instance)
-from imgaug.augmentables.batches import _BatchInAugmentation
+from augimg.augmentables.batches import _BatchInAugmentation
 
 
 class TestGammaContrast(unittest.TestCase):
@@ -1306,7 +1306,7 @@ class TestCLAHE(unittest.TestCase):
         assert icba.from_colorspace == iaa.CSPACE_BGR
         assert icba.to_colorspace == iaa.CSPACE_HSV
 
-    @mock.patch("imgaug.augmenters.color.change_colorspace_")
+    @mock.patch("augimg.augmenters.color.change_colorspace_")
     def test_single_image_grayscale(self, mock_cs):
         img = [
             [0, 1, 2, 3, 4],
@@ -1342,7 +1342,7 @@ class TestCLAHE(unittest.TestCase):
 
     @classmethod
     def _test_single_image_3d_rgb_to_x(cls, to_colorspace, channel_idx):
-        fname_cs = "imgaug.augmenters.color.change_colorspace_"
+        fname_cs = "augimg.augmenters.color.change_colorspace_"
         with mock.patch(fname_cs) as mock_cs:
             img = [
                 [0, 1, 2, 3, 4],
@@ -1414,7 +1414,7 @@ class TestCLAHE(unittest.TestCase):
     def test_single_image_3d_rgb_to_hls(self):
         self._test_single_image_3d_rgb_to_x(iaa.CSPACE_HLS, 1)
 
-    @mock.patch("imgaug.augmenters.color.change_colorspace_")
+    @mock.patch("augimg.augmenters.color.change_colorspace_")
     def test_single_image_4d_rgb_to_lab(self, mock_cs):
         channel_idx = 0
 
@@ -1477,7 +1477,7 @@ class TestCLAHE(unittest.TestCase):
 
         assert np.array_equal(mock_cs.call_args_list[1][0][0], expected2)
 
-    @mock.patch("imgaug.augmenters.color.change_colorspace_")
+    @mock.patch("augimg.augmenters.color.change_colorspace_")
     def test_single_image_5d_rgb_to_lab(self, mock_cs):
         img = [
             [0, 1, 2, 3, 4],
@@ -1543,7 +1543,7 @@ class TestCLAHE(unittest.TestCase):
 
     @classmethod
     def _test_many_images_rgb_to_lab_list(cls, with_3d_images):
-        fname_cs = "imgaug.augmenters.color.change_colorspace_"
+        fname_cs = "augimg.augmenters.color.change_colorspace_"
         with mock.patch(fname_cs) as mock_cs:
             img = [
                 [0, 1, 2, 3, 4],
@@ -1653,7 +1653,7 @@ class TestCLAHE(unittest.TestCase):
 
     @classmethod
     def _test_many_images_rgb_to_lab_array(cls, nb_channels, nb_images):
-        fname_cs = "imgaug.augmenters.color.change_colorspace_"
+        fname_cs = "augimg.augmenters.color.change_colorspace_"
         with mock.patch(fname_cs) as mock_cs:
             with_color_conversion = (
                 True if nb_channels is not None and nb_channels in [3, 4]

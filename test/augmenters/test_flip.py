@@ -17,16 +17,16 @@ import numpy as np
 import six
 import six.moves as sm
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug import dtypes as iadt
-from imgaug.testutils import (reseed, assert_cbaois_equal,
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg import dtypes as iadt
+from augimg.testutils import (reseed, assert_cbaois_equal,
                               runtest_pickleable_uint8_img,
                               is_parameter_instance)
-from imgaug.augmentables.heatmaps import HeatmapsOnImage
-from imgaug.augmentables.segmaps import SegmentationMapsOnImage
-import imgaug.augmenters.flip as fliplib
+from augimg.augmentables.heatmaps import HeatmapsOnImage
+from augimg.augmentables.segmaps import SegmentationMapsOnImage
+import augimg.augmenters.flip as fliplib
 
 
 class TestHorizontalFlip(unittest.TestCase):
@@ -722,8 +722,8 @@ class Test_fliplr(unittest.TestCase):
     def setUp(self):
         reseed()
 
-    @mock.patch("imgaug.augmenters.flip._fliplr_sliced")
-    @mock.patch("imgaug.augmenters.flip._fliplr_cv2")
+    @mock.patch("augimg.augmenters.flip._fliplr_sliced")
+    @mock.patch("augimg.augmenters.flip._fliplr_cv2")
     def test__fliplr_cv2_called_mocked(self, mock_cv2, mock_sliced):
         for dtype in ["uint8", "uint16", "int8", "int16"]:
             mock_cv2.reset_mock()
@@ -735,8 +735,8 @@ class Test_fliplr(unittest.TestCase):
             mock_cv2.assert_called_once_with(arr)
             assert mock_sliced.call_count == 0
 
-    @mock.patch("imgaug.augmenters.flip._fliplr_sliced")
-    @mock.patch("imgaug.augmenters.flip._fliplr_cv2")
+    @mock.patch("augimg.augmenters.flip._fliplr_sliced")
+    @mock.patch("augimg.augmenters.flip._fliplr_cv2")
     def test__fliplr_sliced_called_mocked(self, mock_cv2, mock_sliced):
         try:
             f128 = [np.dtype("float128").name]

@@ -144,7 +144,7 @@ jobs:
     # are no longer produced.
     - name: Generate code coverage report
       run: |
-        coverage run --source imgaug -m pytest --verbose -Walways
+        coverage run --source augimg -m pytest --verbose -Walways
         coverage xml
         coverage report
 

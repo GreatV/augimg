@@ -18,12 +18,12 @@ import numpy as np
 import six.moves as sm
 import cv2
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug import dtypes as iadt
-from imgaug import random as iarandom
-from imgaug.testutils import keypoints_equal, reseed, runtest_pickleable_uint8_img
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg import dtypes as iadt
+from augimg import random as iarandom
+from augimg.testutils import keypoints_equal, reseed, runtest_pickleable_uint8_img
 
 
 class Test_blur_gaussian_(unittest.TestCase):
@@ -1830,7 +1830,7 @@ class TestMeanShiftBlur(unittest.TestCase):
         )
         assert np.all((1.0 <= samples[1]) | (samples[1] <= 2.0))
 
-    @mock.patch("imgaug.augmenters.blur.blur_mean_shift_")
+    @mock.patch("augimg.augmenters.blur.blur_mean_shift_")
     def test_mocked(self, mock_ms):
         aug = iaa.MeanShiftBlur(
             spatial_radius=1,

@@ -17,20 +17,20 @@ import numpy as np
 import six.moves as sm
 import cv2
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug import dtypes as iadt
-from imgaug import random as iarandom
-import imgaug.augmenters.size as iaa_size
-from imgaug.testutils import (array_equal_lists, keypoints_equal, reseed,
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg import dtypes as iadt
+from augimg import random as iarandom
+import augimg.augmenters.size as iaa_size
+from augimg.testutils import (array_equal_lists, keypoints_equal, reseed,
                               assert_cbaois_equal,
                               runtest_pickleable_uint8_img,
                               is_parameter_instance,
                               remove_prefetching)
-from imgaug.augmentables.heatmaps import HeatmapsOnImage
-from imgaug.augmentables.segmaps import SegmentationMapsOnImage
-from imgaug.augmenters.size import _prevent_zero_sizes_after_crops_
+from augimg.augmentables.heatmaps import HeatmapsOnImage
+from augimg.augmentables.segmaps import SegmentationMapsOnImage
+from augimg.augmenters.size import _prevent_zero_sizes_after_crops_
 
 
 class Test__prevent_zero_sizes_after_crops_(unittest.TestCase):
@@ -871,8 +871,8 @@ class Test_compute_paddings_to_reach_multiples_of(unittest.TestCase):
 
 
 class Test_pad_to_multiples_of(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.size.compute_paddings_to_reach_multiples_of")
-    @mock.patch("imgaug.augmenters.size.pad")
+    @mock.patch("augimg.augmenters.size.compute_paddings_to_reach_multiples_of")
+    @mock.patch("augimg.augmenters.size.pad")
     def test_mocked(self, mock_pad, mock_compute_pads):
         mock_compute_pads.return_value = (1, 2, 3, 4)
         mock_pad.return_value = "padded_array"
@@ -887,8 +887,8 @@ class Test_pad_to_multiples_of(unittest.TestCase):
                                          left=4, mode="foo", cval=100)
         assert arr_padded == "padded_array"
 
-    @mock.patch("imgaug.augmenters.size.compute_paddings_to_reach_multiples_of")
-    @mock.patch("imgaug.augmenters.size.pad")
+    @mock.patch("augimg.augmenters.size.compute_paddings_to_reach_multiples_of")
+    @mock.patch("augimg.augmenters.size.pad")
     def test_mocked_return_pad_amounts(self, mock_pad, mock_compute_pads):
         mock_compute_pads.return_value = (1, 2, 3, 4)
         mock_pad.return_value = "padded_array"

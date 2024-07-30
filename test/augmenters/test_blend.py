@@ -20,17 +20,17 @@ except ImportError:
 import numpy as np
 import six.moves as sm
 
-import imgaug as ia
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug import dtypes as iadt
-from imgaug.augmenters import blend
-from imgaug.testutils import (
+import augimg as ia
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg import dtypes as iadt
+from augimg.augmenters import blend
+from augimg.testutils import (
     keypoints_equal, reseed, assert_cbaois_equal,
     runtest_pickleable_uint8_img, is_parameter_instance)
-from imgaug.augmentables.heatmaps import HeatmapsOnImage
-from imgaug.augmentables.segmaps import SegmentationMapsOnImage
-from imgaug.augmentables.batches import _BatchInAugmentation
+from augimg.augmentables.heatmaps import HeatmapsOnImage
+from augimg.augmentables.segmaps import SegmentationMapsOnImage
+from augimg.augmentables.batches import _BatchInAugmentation
 
 
 class Test_blend_alpha(unittest.TestCase):
@@ -2490,7 +2490,7 @@ class TestSomeColorsMaskGen(unittest.TestCase):
 
         assert np.allclose(mask, 1.0)
 
-    @mock.patch("imgaug.augmenters.color.change_colorspace_")
+    @mock.patch("augimg.augmenters.color.change_colorspace_")
     def test_from_colorspace(self, mock_cc):
         image = np.uint8([
             [255, 0, 0],

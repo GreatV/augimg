@@ -1,35 +1,35 @@
 # Reworked Augmentation Methods #451 #566
 
-* Added method `to_normalized_batch()` to `imgaug.augmentables.batches.Batch`
+* Added method `to_normalized_batch()` to `augimg.augmentables.batches.Batch`
   to have the same interface in `Batch` and `UnnormalizedBatch`.
 * Added method `get_augmentable()` to
-  `imgaug.augmentables.batches.Batch` and
-  `imgaug.augmentables.batches.UnnormalizedBatch`.
+  `augimg.augmentables.batches.Batch` and
+  `augimg.augmentables.batches.UnnormalizedBatch`.
 * Added method `get_augmentable_names()` to
-  `imgaug.augmentables.batches.Batch` and
-  `imgaug.augmentables.batches.UnnormalizedBatch`.
+  `augimg.augmentables.batches.Batch` and
+  `augimg.augmentables.batches.UnnormalizedBatch`.
 * Added method `to_batch_in_augmentation()` to
-  `imgaug.augmentables.batches.Batch`.
+  `augimg.augmentables.batches.Batch`.
 * Added method `fill_from_batch_in_augmentation_()` to
-  `imgaug.augmentables.batches.Batch`.
+  `augimg.augmentables.batches.Batch`.
 * Added method `fill_from_augmented_normalized_batch_()` to
-  `imgaug.augmentables.batches.UnnormalizedBatch`.
-* Added class `imgaug.augmentables.batches._BatchInAugmentation`.
-* Added method `_augment_batch_()` in `imgaug.augmenters.meta.Augmenter`.
+  `augimg.augmentables.batches.UnnormalizedBatch`.
+* Added class `augimg.augmentables.batches._BatchInAugmentation`.
+* Added method `_augment_batch_()` in `augimg.augmenters.meta.Augmenter`.
   This method is now called from `augment_batch_()`.
-* Changed `augment_images()` in `imgaug.augmenters.meta.Augmenter` to be
+* Changed `augment_images()` in `augimg.augmenters.meta.Augmenter` to be
   a thin wrapper around `augment_batch_()`.
-* Changed `augment_heatmaps()` in `imgaug.augmenters.meta.Augmenter` to be
+* Changed `augment_heatmaps()` in `augimg.augmenters.meta.Augmenter` to be
   a thin wrapper around `augment_batch_()`.
-* Changed `augment_segmentation_maps()` in `imgaug.augmenters.meta.Augmenter`
+* Changed `augment_segmentation_maps()` in `augimg.augmenters.meta.Augmenter`
   to be a thin wrapper around `augment_batch_()`.
-* Changed `augment_keypoints()` in `imgaug.augmenters.meta.Augmenter` to be
+* Changed `augment_keypoints()` in `augimg.augmenters.meta.Augmenter` to be
   a thin wrapper around `augment_batch_()`.
-* Changed `augment_bounding_boxes()` in `imgaug.augmenters.meta.Augmenter` to be
+* Changed `augment_bounding_boxes()` in `augimg.augmenters.meta.Augmenter` to be
   a thin wrapper around `augment_batch_()`.
-* Changed `augment_polygons()` in `imgaug.augmenters.meta.Augmenter` to be
+* Changed `augment_polygons()` in `augimg.augmenters.meta.Augmenter` to be
   a thin wrapper around `augment_batch_()`.
-* Changed `augment_line_strings()` in `imgaug.augmenters.meta.Augmenter` to be
+* Changed `augment_line_strings()` in `augimg.augmenters.meta.Augmenter` to be
   a thin wrapper around `augment_batch_()`.
 * Changed `augment_image()`, `augment_images()`, `augment_heatmaps()`,
   `augment_segmentation_maps()`, `augment_keypoints()`,
@@ -37,10 +37,10 @@
   to return `None` inputs without change. Previously they resulted in an
   exception. This is more consistent with the behaviour in the other
   `augment_*` methods.
-* Added method `imgaug.augmenters.meta.Augmenter.augment_batch_()`,
+* Added method `augimg.augmenters.meta.Augmenter.augment_batch_()`,
   similar to `augment_batch()`, but explicitly works in-place and has a
   `parent` parameter.
-* Deprecated `imgaug.augmenters.meta.Augmenter.augment_batch()`.
+* Deprecated `augimg.augmenters.meta.Augmenter.augment_batch()`.
   Use `.augment_batch_()` instead.
 * Changed `augment_images()` to no longer be abstract. It defaults
   to not changing the input images.
@@ -106,20 +106,20 @@
 * Added method `PolygonsOnImage.invert_to_keypoints_on_image_()`.
 * Added method `LineStringsOnImage.invert_to_keypoints_on_image_()`.
 * Added method `KeypointsOnImage.invert_to_keypoints_on_image_()`.
-* Added method `imgaug.augmentables.polys.recover_psois_()`.
-* Added method `imgaug.augmentables.utils.convert_cbaois_to_kpsois()`.
-* Added method `imgaug.augmentables.utils.invert_convert_cbaois_to_kpsois_()`.
-* Added method `imgaug.augmentables.utils.deepcopy_fast()`.
-* Added method `imgaug.augmentables.kps.BoundingBoxesOnImage.to_xy_array()`.
-* Added method `imgaug.augmentables.kps.PolygonsOnImage.to_xy_array()`.
-* Added method `imgaug.augmentables.kps.LineStringsOnImage.to_xy_array()`.
-* Added method `imgaug.augmentables.kps.KeypointsOnImage.fill_from_xy_array_()`.
-* Added method `imgaug.augmentables.kps.BoundingBoxesOnImage.fill_from_xy_array_()`.
-* Added method `imgaug.augmentables.kps.PolygonsOnImage.fill_from_xy_array_()`.
-* Added method `imgaug.augmentables.kps.LineStringsOnImage.fill_from_xy_array_()`.
-* Added method `imgaug.augmentables.bbs.BoundingBoxesOnImage.fill_from_xyxy_array_()`.
-* Added method `imgaug.augmentables.bbs.BoundingBox.from_point_soup()`.
-* Added method `imgaug.augmentables.bbs.BoundingBoxesOnImages.from_point_soups()`.
-* Changed `imgaug.augmentables.BoundingBoxesOnImage.from_xyxy_array()` to also
+* Added method `augimg.augmentables.polys.recover_psois_()`.
+* Added method `augimg.augmentables.utils.convert_cbaois_to_kpsois()`.
+* Added method `augimg.augmentables.utils.invert_convert_cbaois_to_kpsois_()`.
+* Added method `augimg.augmentables.utils.deepcopy_fast()`.
+* Added method `augimg.augmentables.kps.BoundingBoxesOnImage.to_xy_array()`.
+* Added method `augimg.augmentables.kps.PolygonsOnImage.to_xy_array()`.
+* Added method `augimg.augmentables.kps.LineStringsOnImage.to_xy_array()`.
+* Added method `augimg.augmentables.kps.KeypointsOnImage.fill_from_xy_array_()`.
+* Added method `augimg.augmentables.kps.BoundingBoxesOnImage.fill_from_xy_array_()`.
+* Added method `augimg.augmentables.kps.PolygonsOnImage.fill_from_xy_array_()`.
+* Added method `augimg.augmentables.kps.LineStringsOnImage.fill_from_xy_array_()`.
+* Added method `augimg.augmentables.bbs.BoundingBoxesOnImage.fill_from_xyxy_array_()`.
+* Added method `augimg.augmentables.bbs.BoundingBox.from_point_soup()`.
+* Added method `augimg.augmentables.bbs.BoundingBoxesOnImages.from_point_soups()`.
+* Changed `augimg.augmentables.BoundingBoxesOnImage.from_xyxy_array()` to also
   accept `(N, 2, 2)` arrays instead of only `(N, 4)`.
-* Added context `imgaug.testutils.TemporaryDirectory`.
+* Added context `augimg.testutils.TemporaryDirectory`.

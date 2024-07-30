@@ -20,10 +20,10 @@ import numpy as np
 import six.moves as sm
 import cv2
 
-import imgaug as ia
-from imgaug import dtypes as iadt
-import imgaug.random as iarandom
-from imgaug.testutils import assertWarns
+import augimg as ia
+from augimg import dtypes as iadt
+import augimg.random as iarandom
+from augimg.testutils import assertWarns
 
 # TODO clean up this file
 
@@ -297,7 +297,7 @@ def test_is_callable():
         assert ia.is_callable(value) is False
 
 
-@mock.patch("imgaug.random.seed")
+@mock.patch("augimg.random.seed")
 def test_seed(mock_seed):
     ia.seed(10017)
     mock_seed.assert_called_once_with(10017)
@@ -314,7 +314,7 @@ def test_current_random_state():
     assert "is deprecated" in str(caught_warnings[-1].message)
 
 
-@mock.patch("imgaug.random.RNG")
+@mock.patch("augimg.random.RNG")
 def test_new_random_state__induce_pseudo_random(mock_rng):
     with warnings.catch_warnings(record=True) as caught_warnings:
         warnings.simplefilter("always")
@@ -326,7 +326,7 @@ def test_new_random_state__induce_pseudo_random(mock_rng):
     assert "is deprecated" in str(caught_warnings[-1].message)
 
 
-@mock.patch("imgaug.random.RNG")
+@mock.patch("augimg.random.RNG")
 def test_new_random_state__induce_fully_random(mock_rng):
     with warnings.catch_warnings(record=True) as caught_warnings:
         warnings.simplefilter("always")
@@ -338,7 +338,7 @@ def test_new_random_state__induce_fully_random(mock_rng):
     assert "is deprecated" in str(caught_warnings[-1].message)
 
 
-@mock.patch("imgaug.random.RNG")
+@mock.patch("augimg.random.RNG")
 def test_new_random_state__use_seed(mock_rng):
     with warnings.catch_warnings(record=True) as caught_warnings:
         warnings.simplefilter("always")
@@ -350,7 +350,7 @@ def test_new_random_state__use_seed(mock_rng):
     assert "is deprecated" in str(caught_warnings[-1].message)
 
 
-@mock.patch("imgaug.random.RNG")
+@mock.patch("augimg.random.RNG")
 def test_dummy_random_state(mock_rng):
     with warnings.catch_warnings(record=True) as caught_warnings:
         warnings.simplefilter("always")
@@ -362,8 +362,8 @@ def test_dummy_random_state(mock_rng):
     assert "is deprecated" in str(caught_warnings[-1].message)
 
 
-@mock.patch("imgaug.random.copy_generator")
-@mock.patch("imgaug.random.copy_generator_unless_global_generator")
+@mock.patch("augimg.random.copy_generator")
+@mock.patch("augimg.random.copy_generator_unless_global_generator")
 def test_copy_random_state__not_global(mock_copy_gen_glob, mock_copy_gen):
     with warnings.catch_warnings(record=True) as caught_warnings:
         warnings.simplefilter("always")
@@ -377,8 +377,8 @@ def test_copy_random_state__not_global(mock_copy_gen_glob, mock_copy_gen):
     assert "is deprecated" in str(caught_warnings[-1].message)
 
 
-@mock.patch("imgaug.random.copy_generator")
-@mock.patch("imgaug.random.copy_generator_unless_global_generator")
+@mock.patch("augimg.random.copy_generator")
+@mock.patch("augimg.random.copy_generator_unless_global_generator")
 def test_copy_random_state__also_global(mock_copy_gen_glob, mock_copy_gen):
     with warnings.catch_warnings(record=True) as caught_warnings:
         warnings.simplefilter("always")
@@ -392,7 +392,7 @@ def test_copy_random_state__also_global(mock_copy_gen_glob, mock_copy_gen):
     assert "is deprecated" in str(caught_warnings[-1].message)
 
 
-@mock.patch("imgaug.random.derive_generator_")
+@mock.patch("augimg.random.derive_generator_")
 def test_derive_random_state(mock_derive):
     with warnings.catch_warnings(record=True) as caught_warnings:
         warnings.simplefilter("always")
@@ -405,7 +405,7 @@ def test_derive_random_state(mock_derive):
     assert "is deprecated" in str(caught_warnings[-1].message)
 
 
-@mock.patch("imgaug.random.derive_generators_")
+@mock.patch("augimg.random.derive_generators_")
 def test_derive_random_states(mock_derive):
     with warnings.catch_warnings(record=True) as caught_warnings:
         warnings.simplefilter("always")
@@ -418,7 +418,7 @@ def test_derive_random_states(mock_derive):
     assert "is deprecated" in str(caught_warnings[-1].message)
 
 
-@mock.patch("imgaug.random.advance_generator_")
+@mock.patch("augimg.random.advance_generator_")
 def test_forward_random_state(mock_advance):
     with warnings.catch_warnings(record=True) as caught_warnings:
         warnings.simplefilter("always")
@@ -1542,7 +1542,7 @@ def test_draw_grid():
 
 
 def test_classes_and_functions_marked_deprecated():
-    import imgaug.imgaug as iia
+    import augimg.augimg as iia
 
     # class
     with warnings.catch_warnings(record=True) as caught_warnings:
@@ -1558,7 +1558,7 @@ def test_classes_and_functions_marked_deprecated():
         assert len(caught_warnings) == 1
         assert "is deprecated" in str(caught_warnings[-1].message)
 
-    # no deprecated warning for calls to imgaug.<name>
+    # no deprecated warning for calls to augimg.<name>
     with warnings.catch_warnings(record=True) as caught_warnings:
         warnings.simplefilter("always")
         _kp = ia.Keypoint(x=1, y=2)

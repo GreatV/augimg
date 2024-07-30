@@ -15,9 +15,9 @@ except ImportError:
 import numpy as np
 import six.moves as sm
 
-import imgaug as ia
-import imgaug.augmentables.normalization as normalization
-from imgaug.testutils import reseed
+import augimg as ia
+import augimg.augmentables.normalization as normalization
+from augimg.testutils import reseed
 
 
 # TODO split up tests here

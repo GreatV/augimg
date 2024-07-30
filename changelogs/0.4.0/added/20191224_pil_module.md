@@ -1,50 +1,50 @@
-# Added Module `imgaug.augmenters.pillike` #479 #480 #538
+# Added Module `augimg.augmenters.pillike` #479 #480 #538
 
-* Added module `imgaug.augmenters.pillike`, which contains augmenters and
+* Added module `augimg.augmenters.pillike`, which contains augmenters and
   functions corresponding to commonly used PIL functions. Their outputs
   are guaranteed to be identical to the PIL outputs.
 * Added the following functions to the module:
-  * `imgaug.augmenters.pillike.equalize`
-  * `imgaug.augmenters.pillike.equalize_`
-  * `imgaug.augmenters.pillike.autocontrast`
-  * `imgaug.augmenters.pillike.autocontrast_`
-  * `imgaug.augmenters.pillike.solarize`
-  * `imgaug.augmenters.pillike.solarize_`
-  * `imgaug.augmenters.pillike.posterize`
-  * `imgaug.augmenters.pillike.posterize_`
-  * `imgaug.augmenters.pillike.enhance_color`
-  * `imgaug.augmenters.pillike.enhance_contrast`
-  * `imgaug.augmenters.pillike.enhance_brightness`
-  * `imgaug.augmenters.pillike.enhance_sharpness`
-  * `imgaug.augmenters.pillike.filter_blur`
-  * `imgaug.augmenters.pillike.filter_smooth`
-  * `imgaug.augmenters.pillike.filter_smooth_more`
-  * `imgaug.augmenters.pillike.filter_edge_enhance`
-  * `imgaug.augmenters.pillike.filter_edge_enhance_more`
-  * `imgaug.augmenters.pillike.filter_find_edges`
-  * `imgaug.augmenters.pillike.filter_contour`
-  * `imgaug.augmenters.pillike.filter_emboss`
-  * `imgaug.augmenters.pillike.filter_sharpen`
-  * `imgaug.augmenters.pillike.filter_detail`
-  * `imgaug.augmenters.pillike.warp_affine`
+  * `augimg.augmenters.pillike.equalize`
+  * `augimg.augmenters.pillike.equalize_`
+  * `augimg.augmenters.pillike.autocontrast`
+  * `augimg.augmenters.pillike.autocontrast_`
+  * `augimg.augmenters.pillike.solarize`
+  * `augimg.augmenters.pillike.solarize_`
+  * `augimg.augmenters.pillike.posterize`
+  * `augimg.augmenters.pillike.posterize_`
+  * `augimg.augmenters.pillike.enhance_color`
+  * `augimg.augmenters.pillike.enhance_contrast`
+  * `augimg.augmenters.pillike.enhance_brightness`
+  * `augimg.augmenters.pillike.enhance_sharpness`
+  * `augimg.augmenters.pillike.filter_blur`
+  * `augimg.augmenters.pillike.filter_smooth`
+  * `augimg.augmenters.pillike.filter_smooth_more`
+  * `augimg.augmenters.pillike.filter_edge_enhance`
+  * `augimg.augmenters.pillike.filter_edge_enhance_more`
+  * `augimg.augmenters.pillike.filter_find_edges`
+  * `augimg.augmenters.pillike.filter_contour`
+  * `augimg.augmenters.pillike.filter_emboss`
+  * `augimg.augmenters.pillike.filter_sharpen`
+  * `augimg.augmenters.pillike.filter_detail`
+  * `augimg.augmenters.pillike.warp_affine`
 * Added the following augmenters to the module:
-  * `imgaug.augmenters.pillike.Solarize`
-  * `imgaug.augmenters.pillike.Posterize`.
-    (Currently alias for `imgaug.augmenters.color.Posterize`.)
-  * `imgaug.augmenters.pillike.Equalize`
-  * `imgaug.augmenters.pillike.Autocontrast`
-  * `imgaug.augmenters.pillike.EnhanceColor`
-  * `imgaug.augmenters.pillike.EnhanceContrast`
-  * `imgaug.augmenters.pillike.EnhanceBrightness`
-  * `imgaug.augmenters.pillike.EnhanceSharpness`
-  * `imgaug.augmenters.pillike.FilterBlur`
-  * `imgaug.augmenters.pillike.FilterSmooth`
-  * `imgaug.augmenters.pillike.FilterSmoothMore`
-  * `imgaug.augmenters.pillike.FilterEdgeEnhance`
-  * `imgaug.augmenters.pillike.FilterEdgeEnhanceMore`
-  * `imgaug.augmenters.pillike.FilterFindEdges`
-  * `imgaug.augmenters.pillike.FilterContour`
-  * `imgaug.augmenters.pillike.FilterEmboss`
-  * `imgaug.augmenters.pillike.FilterSharpen`
-  * `imgaug.augmenters.pillike.FilterDetail`
-  * `imgaug.augmenters.pillike.Affine`
+  * `augimg.augmenters.pillike.Solarize`
+  * `augimg.augmenters.pillike.Posterize`.
+    (Currently alias for `augimg.augmenters.color.Posterize`.)
+  * `augimg.augmenters.pillike.Equalize`
+  * `augimg.augmenters.pillike.Autocontrast`
+  * `augimg.augmenters.pillike.EnhanceColor`
+  * `augimg.augmenters.pillike.EnhanceContrast`
+  * `augimg.augmenters.pillike.EnhanceBrightness`
+  * `augimg.augmenters.pillike.EnhanceSharpness`
+  * `augimg.augmenters.pillike.FilterBlur`
+  * `augimg.augmenters.pillike.FilterSmooth`
+  * `augimg.augmenters.pillike.FilterSmoothMore`
+  * `augimg.augmenters.pillike.FilterEdgeEnhance`
+  * `augimg.augmenters.pillike.FilterEdgeEnhanceMore`
+  * `augimg.augmenters.pillike.FilterFindEdges`
+  * `augimg.augmenters.pillike.FilterContour`
+  * `augimg.augmenters.pillike.FilterEmboss`
+  * `augimg.augmenters.pillike.FilterSharpen`
+  * `augimg.augmenters.pillike.FilterDetail`
+  * `augimg.augmenters.pillike.Affine`

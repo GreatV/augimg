@@ -18,14 +18,14 @@ import numpy as np
 import six.moves as sm
 import cv2
 
-import imgaug as ia
-import imgaug.random as iarandom
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-import imgaug.augmenters.meta as meta
-from imgaug.testutils import (reseed, runtest_pickleable_uint8_img,
+import augimg as ia
+import augimg.random as iarandom
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+import augimg.augmenters.meta as meta
+from augimg.testutils import (reseed, runtest_pickleable_uint8_img,
                               is_parameter_instance)
-import imgaug.augmenters.color as colorlib
+import augimg.augmenters.color as colorlib
 
 
 class Test_change_colorspace_(unittest.TestCase):
@@ -372,7 +372,7 @@ class Test_change_color_temperatures_(unittest.TestCase):
 
 
 class Test_change_color_temperature_(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.color.change_color_temperatures_")
+    @mock.patch("augimg.augmenters.color.change_color_temperatures_")
     def test_calls_batch_function(self, mock_ccts):
         image = np.full((1, 1, 3), 255, dtype=np.uint8)
         mock_ccts.return_value = ["example"]
@@ -948,7 +948,7 @@ class TestWithHueAndSaturation(unittest.TestCase):
             assert np.array_equal(image_aug, image_expected)
 
     def test_augment_heatmaps(self):
-        from imgaug.augmentables.heatmaps import HeatmapsOnImage
+        from augimg.augmentables.heatmaps import HeatmapsOnImage
 
         class _DummyAugmenter(meta.Augmenter):
             def __init__(self):
@@ -974,7 +974,7 @@ class TestWithHueAndSaturation(unittest.TestCase):
         assert aug_dummy.call_count == 1
 
     def test_augment_keypoints(self):
-        from imgaug.augmentables.kps import KeypointsOnImage
+        from augimg.augmentables.kps import KeypointsOnImage
 
         class _DummyAugmenter(meta.Augmenter):
             def __init__(self):
@@ -1944,7 +1944,7 @@ class TestChangeColorTemperature(unittest.TestCase):
         assert is_parameter_instance(aug.kelvin, iap.Deterministic)
         assert aug.kelvin.value == 5000
 
-    @mock.patch("imgaug.augmenters.color.change_color_temperatures_")
+    @mock.patch("augimg.augmenters.color.change_color_temperatures_")
     def test_mocked(self, mock_ccts):
         image = np.zeros((1, 1, 3), dtype=np.uint8)
         aug = iaa.ChangeColorTemperature((1000, 40000),
@@ -2000,7 +2000,7 @@ class TestKMeansColorQuantization(unittest.TestCase):
 
     @property
     def quantization_func_name(self):
-        return "imgaug.augmenters.color.quantize_kmeans"
+        return "augimg.augmenters.color.quantize_kmeans"
 
     def test___init___defaults(self):
         aug = self.augmenter()
@@ -2100,7 +2100,7 @@ class TestKMeansColorQuantization(unittest.TestCase):
         mock_change_colorspace.augment_image.side_effect = _noop
         mock_change_colorspace._draw_samples.return_value = (None, ["foo"])
 
-        fname = "imgaug.augmenters.color.ChangeColorspace"
+        fname = "augimg.augmenters.color.ChangeColorspace"
         with mock.patch(fname, mock_change_colorspace):
             _ = aug.augment_image(np.zeros((4, 4, 3), dtype=np.uint8))
 
@@ -2118,7 +2118,7 @@ class TestKMeansColorQuantization(unittest.TestCase):
         aug = iaa.KMeansColorQuantization(max_size=None)
         mock_imresize = mock.MagicMock(return_value=image)
 
-        fname = "imgaug.imresize_single_image"
+        fname = "augimg.imresize_single_image"
         with mock.patch(fname, mock_imresize):
             image_aug = aug.augment_image(image)
             assert image_aug.shape == image.shape
@@ -2143,7 +2143,7 @@ class TestKMeansColorQuantization(unittest.TestCase):
         mock_imresize = mock.Mock()
         mock_imresize.side_effect = _ImresizeSideEffect()
 
-        fname = "imgaug.imresize_single_image"
+        fname = "augimg.imresize_single_image"
         with mock.patch(fname, mock_imresize):
             _ = aug.augment_image(image)
 
@@ -2158,7 +2158,7 @@ class TestKMeansColorQuantization(unittest.TestCase):
         aug = self.augmenter(max_size=100)
         mock_imresize = mock.MagicMock(return_value=image)
 
-        fname = "imgaug.imresize_single_image"
+        fname = "augimg.imresize_single_image"
         with mock.patch(fname, mock_imresize):
             image_aug = aug.augment_image(image)
             assert image_aug.shape == image.shape
@@ -2183,7 +2183,7 @@ class TestKMeansColorQuantization(unittest.TestCase):
         mock_imresize = mock.Mock()
         mock_imresize.side_effect = _ImresizeSideEffect()
 
-        fname = "imgaug.imresize_single_image"
+        fname = "augimg.imresize_single_image"
         with mock.patch(fname, mock_imresize):
             _ = aug.augment_image(image)
 
@@ -2294,7 +2294,7 @@ class TestKMeansColorQuantization(unittest.TestCase):
 
 
 class Test_quantize_colors_kmeans(unittest.TestCase):
-    @mock.patch("imgaug.imgaug.warn_deprecated")
+    @mock.patch("augimg.augimg.warn_deprecated")
     def test_warns_deprecated(self, mock_warn):
         arr = np.arange(1*1*3).astype(np.uint8).reshape((1, 1, 3))
 
@@ -2302,8 +2302,8 @@ class Test_quantize_colors_kmeans(unittest.TestCase):
 
         assert mock_warn.call_count == 1
 
-    @mock.patch("imgaug.augmenters.color.quantize_kmeans")
-    @mock.patch("imgaug.imgaug.warn_deprecated")
+    @mock.patch("augimg.augmenters.color.quantize_kmeans")
+    @mock.patch("augimg.augimg.warn_deprecated")
     def test_calls_quantize_kmeans(self, mock_warn, mock_qu):
         arr = np.arange(1*1*3).astype(np.uint8).reshape((1, 1, 3))
         mock_qu.return_value = "foo"
@@ -2436,7 +2436,7 @@ class TestUniformColorQuantization(TestKMeansColorQuantization):
 
     @property
     def quantization_func_name(self):
-        return "imgaug.augmenters.color.quantize_uniform_"
+        return "augimg.augmenters.color.quantize_uniform_"
 
     def test___init___defaults(self):
         aug = self.augmenter()
@@ -2549,7 +2549,7 @@ class TestUniformColorQuantization(TestKMeansColorQuantization):
         mock_change_colorspace.augment_image.side_effect = _noop
         mock_change_colorspace._draw_samples.return_value = (None, ["foo"])
 
-        fname = "imgaug.augmenters.color.ChangeColorspace"
+        fname = "augimg.augmenters.color.ChangeColorspace"
         with mock.patch(fname, mock_change_colorspace):
             _ = aug.augment_image(np.zeros((4, 4, 3), dtype=np.uint8))
 
@@ -2579,7 +2579,7 @@ class TestUniformColorQuantizationToNBits(unittest.TestCase):
 
     @property
     def quantization_func_name(self):
-        return "imgaug.augmenters.color.quantize_uniform_to_n_bits"
+        return "augimg.augmenters.color.quantize_uniform_to_n_bits"
 
     def test___init___defaults(self):
         aug = self.augmenter()
@@ -2664,7 +2664,7 @@ class TestPosterize(TestUniformColorQuantizationToNBits):
 
 
 class Test_quantize_colors_uniform(unittest.TestCase):
-    @mock.patch("imgaug.imgaug.warn_deprecated")
+    @mock.patch("augimg.augimg.warn_deprecated")
     def test_warns_deprecated(self, mock_warn):
         arr = np.arange(1*1*3).astype(np.uint8).reshape((1, 1, 3))
 
@@ -2672,8 +2672,8 @@ class Test_quantize_colors_uniform(unittest.TestCase):
 
         assert mock_warn.call_count == 1
 
-    @mock.patch("imgaug.augmenters.color.quantize_uniform")
-    @mock.patch("imgaug.imgaug.warn_deprecated")
+    @mock.patch("augimg.augmenters.color.quantize_uniform")
+    @mock.patch("augimg.augimg.warn_deprecated")
     def test_calls_quantize_uniform(self, mock_warn, mock_qu):
         arr = np.arange(1*1*3).astype(np.uint8).reshape((1, 1, 3))
         mock_qu.return_value = "foo"
@@ -2686,7 +2686,7 @@ class Test_quantize_colors_uniform(unittest.TestCase):
 
 
 class Test_quantize_uniform(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.color.quantize_uniform_")
+    @mock.patch("augimg.augmenters.color.quantize_uniform_")
     def test_calls_inplace_function(self, mock_qu):
         image = np.zeros((1, 1, 3), dtype=np.uint8)
         mock_qu.return_value = "foo"
@@ -2876,7 +2876,7 @@ class Test_quantize_uniform_(unittest.TestCase):
 
 
 class Test_quantize_uniform_to_n_bits(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.color.quantize_uniform_to_n_bits_")
+    @mock.patch("augimg.augmenters.color.quantize_uniform_to_n_bits_")
     def test_calls_inplace_function(self, mock_qu):
         image = np.zeros((1, 1, 3), dtype=np.uint8)
         mock_qu.return_value = "foo"
@@ -2894,7 +2894,7 @@ class Test_quantize_uniform_to_n_bits(unittest.TestCase):
 # not much testing necessary here as the function is a wrapper around
 # quantize_uniform()
 class Test_quantize_uniform_to_n_bits_(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.color.quantize_uniform_")
+    @mock.patch("augimg.augmenters.color.quantize_uniform_")
     def test_mocked(self, mock_qu):
         mock_qu.return_value = "foo"
         image = np.zeros((1, 1, 3), dtype=np.uint8)
@@ -2912,7 +2912,7 @@ class Test_quantize_uniform_to_n_bits_(unittest.TestCase):
 
 
 class Test_posterize(unittest.TestCase):
-    @mock.patch("imgaug.augmenters.color.quantize_uniform_to_n_bits")
+    @mock.patch("augimg.augmenters.color.quantize_uniform_to_n_bits")
     def test_mocked(self, mock_qu):
         mock_qu.return_value = "foo"
         image = np.zeros((1, 1, 3), dtype=np.uint8)

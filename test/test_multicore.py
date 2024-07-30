@@ -20,12 +20,12 @@ except ImportError:
 import numpy as np
 import six.moves as sm
 
-import imgaug as ia
-import imgaug.multicore as multicore
-import imgaug.random as iarandom
-from imgaug import augmenters as iaa
-from imgaug.testutils import reseed
-from imgaug.augmentables.batches import Batch, UnnormalizedBatch
+import augimg as ia
+import augimg.multicore as multicore
+import augimg.random as iarandom
+from augimg import augmenters as iaa
+from augimg.testutils import reseed
+from augimg.augmentables.batches import Batch, UnnormalizedBatch
 
 IS_SUPPORTING_CONTEXTS = (sys.version_info[0] == 3
                           and sys.version_info[1] >= 4)
@@ -46,7 +46,7 @@ class clean_context():
 class Test__get_context(unittest.TestCase):
     @unittest.skipUnless(not IS_SUPPORTING_CONTEXTS,
                          "Behaviour happens only in python <=3.3")
-    @mock.patch("imgaug.imgaug.warn")
+    @mock.patch("augimg.augimg.warn")
     @mock.patch("platform.version")
     def test_mocked_nixos_python2(self, mock_version, mock_warn):
         with clean_context():
@@ -675,7 +675,7 @@ class Test_Pool_initialize_worker(unittest.TestCase):
         multicore.Pool._WORKER_AUGSEQ = None
         multicore.Pool._WORKER_SEED_START = None
 
-    @mock.patch("imgaug.multicore.Pool")
+    @mock.patch("augimg.multicore.Pool")
     def test_with_seed_start(self, mock_ia_pool):
         augseq = mock.MagicMock()
         multicore._Pool_initialize_worker(augseq, 1)
@@ -685,7 +685,7 @@ class Test_Pool_initialize_worker(unittest.TestCase):
 
     @mock.patch.object(sys, 'version_info')
     @mock.patch("time.time_ns", create=True)  # doesnt exist in <=3.6
-    @mock.patch("imgaug.random.seed")
+    @mock.patch("augimg.random.seed")
     @mock.patch("multiprocessing.current_process")
     def test_without_seed_start_simulate_py37_or_higher(self,
                                                         mock_cp,
@@ -713,7 +713,7 @@ class Test_Pool_initialize_worker(unittest.TestCase):
 
     @mock.patch.object(sys, 'version_info')
     @mock.patch("time.time")
-    @mock.patch("imgaug.random.seed")
+    @mock.patch("augimg.random.seed")
     @mock.patch("multiprocessing.current_process")
     def test_without_seed_start_simulate_py36_or_lower(self,
                                                        mock_cp,
@@ -739,7 +739,7 @@ class Test_Pool_initialize_worker(unittest.TestCase):
         seed_local = augseq.seed_.call_args_list[0][0][0]
         assert seed_global != seed_local
 
-    @mock.patch("imgaug.random.seed")
+    @mock.patch("augimg.random.seed")
     def test_without_seed_start(self, mock_ia_seed):
         augseq = mock.MagicMock()
 
@@ -786,7 +786,7 @@ class Test_Pool_worker(unittest.TestCase):
         assert augseq.augment_batch_.call_count == 1
         augseq.augment_batch_.assert_called_once_with(batch)
 
-    @mock.patch("imgaug.random.seed")
+    @mock.patch("augimg.random.seed")
     def test_with_seed_start(self, mock_ia_seed):
         augseq = mock.MagicMock()
         augseq.augment_batch_.return_value = "augmented_batch_"
@@ -829,7 +829,7 @@ class Test_Pool_starworker(unittest.TestCase):
         multicore.Pool._WORKER_AUGSEQ = None
         multicore.Pool._WORKER_SEED_START = None
 
-    @mock.patch("imgaug.multicore._Pool_worker")
+    @mock.patch("augimg.multicore._Pool_worker")
     def test_simple_call(self, mock_worker):
         image = np.zeros((1, 1, 3), dtype=np.uint8)
         batch = UnnormalizedBatch(images=[image])

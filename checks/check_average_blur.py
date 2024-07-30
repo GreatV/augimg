@@ -4,8 +4,8 @@ import numpy as np
 from skimage import data
 import cv2
 
-import imgaug as ia
-from imgaug import augmenters as iaa
+import augimg as ia
+from augimg import augmenters as iaa
 
 TIME_PER_STEP = 5000
 NB_AUGS_PER_IMAGE = 10

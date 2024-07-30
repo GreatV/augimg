@@ -19,17 +19,17 @@ import six.moves as sm
 import skimage.morphology
 import cv2
 
-import imgaug as ia
-from imgaug import random as iarandom
-from imgaug import augmenters as iaa
-from imgaug import parameters as iap
-from imgaug import dtypes as iadt
-from imgaug.testutils import (
+import augimg as ia
+from augimg import random as iarandom
+from augimg import augmenters as iaa
+from augimg import parameters as iap
+from augimg import dtypes as iadt
+from augimg.testutils import (
     array_equal_lists, keypoints_equal, reseed, assert_cbaois_equal,
     runtest_pickleable_uint8_img, assertWarns, is_parameter_instance)
-from imgaug.augmentables.heatmaps import HeatmapsOnImage
-from imgaug.augmentables.segmaps import SegmentationMapsOnImage
-import imgaug.augmenters.geometric as geometriclib
+from augimg.augmentables.heatmaps import HeatmapsOnImage
+from augimg.augmentables.segmaps import SegmentationMapsOnImage
+import augimg.augmenters.geometric as geometriclib
 
 
 def _assert_same_min_max(observed, actual):

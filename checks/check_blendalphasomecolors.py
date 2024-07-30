@@ -1,7 +1,7 @@
 from __future__ import print_function, division, absolute_import
 import imageio
-import imgaug as ia
-import imgaug.augmenters as iaa
+import augimg as ia
+import augimg.augmenters as iaa
 
 
 def main():

@@ -14,8 +14,8 @@ except ImportError:
 
 import numpy as np
 
-from imgaug import augmenters as iaa
-from imgaug.testutils import reseed, runtest_pickleable_uint8_img
+from augimg import augmenters as iaa
+from augimg.testutils import reseed, runtest_pickleable_uint8_img
 
 
 class TestRandAugment(unittest.TestCase):
@@ -23,9 +23,9 @@ class TestRandAugment(unittest.TestCase):
         reseed()
 
     # for some reason these mocks don't work with
-    # imgaug.augmenters.collections.(...)
-    @mock.patch("imgaug.augmenters.RandAugment._create_initial_augmenters_list")
-    @mock.patch("imgaug.augmenters.RandAugment._create_main_augmenters_list")
+    # augimg.augmenters.collections.(...)
+    @mock.patch("augimg.augmenters.RandAugment._create_initial_augmenters_list")
+    @mock.patch("augimg.augmenters.RandAugment._create_main_augmenters_list")
     def test_n(self, mock_main, mock_initial):
         mock_main.return_value = [iaa.Add(1), iaa.Add(2), iaa.Add(4)]
         mock_initial.return_value = []
@@ -44,9 +44,9 @@ class TestRandAugment(unittest.TestCase):
                 assert img_aug[0, 0, 0] in expected[n]
 
     # for some reason these mocks don't work with
-    # imgaug.augmenters.collections.(...)
-    @mock.patch("imgaug.augmenters.RandAugment._create_initial_augmenters_list")
-    @mock.patch("imgaug.augmenters.RandAugment._create_main_augmenters_list")
+    # augimg.augmenters.collections.(...)
+    @mock.patch("augimg.augmenters.RandAugment._create_initial_augmenters_list")
+    @mock.patch("augimg.augmenters.RandAugment._create_main_augmenters_list")
     def test_m(self, mock_main, mock_initial):
         def _create_main_list(m, _cval):
             return [iaa.Add(m)]

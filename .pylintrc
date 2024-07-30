@@ -152,7 +152,7 @@ disable=print-statement,
         deprecated-sys-function,
         exception-escape,
         comprehension-escape,
-        # ------------- non-standard for imgaug -------------
+        # ------------- non-standard for augimg -------------
         fixme,  # no warnings for TODOs
         line-too-long,  # required for type definitions in docstrings
         too-many-lines,  # currently unfulfillable
@@ -397,7 +397,7 @@ good-names=i,
            ex,
            Run,
            _,
-           # ------- imgaug-specific settings -------
+           # ------- augimg-specific settings -------
            n,    # number
            h,    # height
            w,    # width

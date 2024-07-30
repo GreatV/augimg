@@ -1,15 +1,15 @@
 # Changes to Crop and Pad augmenters #459
 
 The following functions were moved. Their old names are now deprecated.
-* Moved `imgaug.imgaug.pad` to `imgaug.augmenters.size.pad`
-* Moved `imgaug.imgaug.pad_to_aspect_ratio` to
-  `imgaug.augmenters.size.pad_to_aspect_ratio`.
-* Moved `imgaug.imgaug.pad_to_multiples_of` to
-  `imgaug.augmenters.size.pad_to_multiples_of`.
-* Moved `imgaug.imgaug.compute_paddings_for_aspect_ratio` to
-  `imgaug.augmenters.size.compute_paddings_to_reach_aspect_ratio`.
-* Moved `imgaug.imgaug.compute_paddings_to_reach_multiples_of`
-  to `imgaug.augmenters.size.compute_paddings_to_reach_multiples_of`.
+* Moved `augimg.augimg.pad` to `augimg.augmenters.size.pad`
+* Moved `augimg.augimg.pad_to_aspect_ratio` to
+  `augimg.augmenters.size.pad_to_aspect_ratio`.
+* Moved `augimg.augimg.pad_to_multiples_of` to
+  `augimg.augmenters.size.pad_to_multiples_of`.
+* Moved `augimg.augimg.compute_paddings_for_aspect_ratio` to
+  `augimg.augmenters.size.compute_paddings_to_reach_aspect_ratio`.
+* Moved `augimg.augimg.compute_paddings_to_reach_multiples_of`
+  to `augimg.augmenters.size.compute_paddings_to_reach_multiples_of`.
 
 
 The following augmenters were added:
@@ -38,13 +38,13 @@ All `Center<name>` augmenters are wrappers around `<name>` with parameter
 
 Added functions:
 * Added function
-  `imgaug.augmenters.size.compute_croppings_to_reach_aspect_ratio()`.
+  `augimg.augmenters.size.compute_croppings_to_reach_aspect_ratio()`.
 * Added function
-  `imgaug.augmenters.size.compute_croppings_to_reach_multiples_of()`.
+  `augimg.augmenters.size.compute_croppings_to_reach_multiples_of()`.
 * Added function
-  `imgaug.augmenters.size.compute_croppings_to_reach_powers_of()`.
+  `augimg.augmenters.size.compute_croppings_to_reach_powers_of()`.
 * Added function
-  `imgaug.augmenters.size.compute_paddings_to_reach_powers_of()`.
+  `augimg.augmenters.size.compute_paddings_to_reach_powers_of()`.
 
 
 Other changes:
@@ -67,12 +67,12 @@ Other changes:
 * Changed the projection of pad/crop values between images and non-images
   to make the behaviour slightly more accurate in fringe cases.
 * Improved behaviour of function
-  `imgaug.augmenters.size.compute_paddings_for_aspect_ratio()` for zero-sized
+  `augimg.augmenters.size.compute_paddings_for_aspect_ratio()` for zero-sized
   axes.
-* Changed function `imgaug.augmenters.size.compute_paddings_for_aspect_ratio()`
+* Changed function `augimg.augmenters.size.compute_paddings_for_aspect_ratio()`
   to also support shape tuples instead of only ndarrays.
 * Changed function
-  `imgaug.augmenters.size.compute_paddings_to_reach_multiples_of()`
+  `augimg.augmenters.size.compute_paddings_to_reach_multiples_of()`
   to also support shape tuples instead of only ndarrays.
 
 

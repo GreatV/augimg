@@ -1,6 +1,6 @@
 from __future__ import print_function, division, absolute_import
-import imgaug as ia
-import imgaug.augmenters as iaa
+import augimg as ia
+import augimg.augmenters as iaa
 import timeit
 
 
@@ -11,8 +11,8 @@ def main():
                 "iaa.solarize(image, %d)" % (threshold,),
                 number=1000,
                 setup=(
-                    "import imgaug as ia; "
-                    "import imgaug.augmenters as iaa; "
+                    "import augimg as ia; "
+                    "import augimg.augmenters as iaa; "
                     "image = ia.quokka_square((%d, %d))" % (size, size))
             )
             time_pil = timeit.timeit(
@@ -24,7 +24,7 @@ def main():
                     "import numpy as np; "
                     "import PIL.Image; "
                     "import PIL.ImageOps; "
-                    "import imgaug as ia; "
+                    "import augimg as ia; "
                     "image = ia.quokka_square((%d, %d))" % (size, size))
             )
             print("[size=%04d, thresh=%03d] iaa=%.4f pil=%.4f" % (
