@@ -13,4 +13,4 @@ import augimg.parameters as parameters
 import augimg.dtypes as dtypes
 import augimg.data as data
 
-__version__ = '0.4.0'
+__version__ = '0.5.0'
